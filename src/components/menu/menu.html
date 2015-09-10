@@ -1,0 +1,39 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="att-orange-background-gradient">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon ion-navicon" 
+                style="color: white;"
+                menu-toggle="left" 
+                ng-hide="$exposeAside.active">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" expose-aside-when="large"> 
+    <ion-header-bar >
+      <h1 class="title" style="color:white">Left</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close ng-click="vm.login()">
+          Login
+        </ion-item>
+        <ion-item menu-close href="#/menu/search">
+          Search
+        </ion-item>
+        <ion-item menu-close href="#/menu/browse">
+          Browse
+        </ion-item>
+        <ion-item menu-close href="#/menu/playlists">
+          Playlists
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
