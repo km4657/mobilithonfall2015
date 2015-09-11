@@ -1,45 +1,46 @@
 /**
  * List of all dependent gulp pluggins 
+ * 
+ * TODO: Create a constants file <- move strings 
  */
-var gulp = require('gulp-help')(require('gulp')),
-  inject = require('gulp-inject'),
-  gutil = require('gulp-util'),
-  watch = require('gulp-watch'),
-  webserver = require('gulp-webserver'),
-  uglify = require('gulp-uglify'),
-  bower = require('bower'),
-  concat = require('gulp-concat'),
-  sass = require('gulp-sass'),
-  minifyCss = require('gulp-minify-css'),
-  rename = require('gulp-rename'),
-  filesize = require('gulp-filesize'),
-  filenamesToJson = require('gulp-filenames-to-json'),
-  clean = require('gulp-rimraf'),
-  merge = require('gulp-merge'),
-  Server = require('karma').Server;
+var gulp = require('gulp-help')(require('gulp'));
+var inject = require('gulp-inject');
+var gutil = require('gulp-util');
+var watch = require('gulp-watch');
+var webserver = require('gulp-webserver');
+var bower = require('bower');
+var sass = require('gulp-sass');
+var filesize = require('gulp-filesize');
+var clean = require('gulp-rimraf');
+var merge = require('gulp-merge');
+var Server = require('karma').Server;
+var protractor = require("gulp-protractor").protractor;
 
 
-var index_deps = require('./index_deps')();
-var config = require('./gulp.config')();
-console.log('srcList:', config.srcList);
-// source and build directory definition
-var source = config.src, build = config.build;
+/**
+ * List of local config files
+ */
+var index_deps = require('./gulpfiles/index_deps')();
+var config = require('./gulpfiles/gulp.config')();
+var dist = require('./gulpfiles/gulpfile_dist')();
 
-gulp.task('default');//,  ['help']);
-gulp.task('start', ['build', 'watch', 'test', 'run']);
+gulp.task('default', ['help']);
+gulp.task('start',
+    'Starts webserver with auto reloads on src changes.',
+    ['watch', 'run']);
 gulp.task('build',
-	'Performs all build tasks to create build directory.\n\t\t', 
-	['compile','copy','index']);
-gulp.task('clean','Delete build and dist directories.', function () {
-    return gulp.src(['build','dist'], { read: false }).pipe(clean());
+    'Performs all build tasks to create build directory.\n\t\t',
+    ['compile', 'copy', 'index']);
+gulp.task('clean', 'Delete build and dist directories.', function () {
+    return gulp.src(['build', 'dist'], { read: false }).pipe(clean());
 });
-gulp.task('compile', 'Compile sass files and copy to src/css.',function (done) {
-  gulp.src('./src/scss/*.scss')
-    .pipe(sass({
-      errLogToConsole: true
-    }))
-    .pipe(gulp.dest('./src/css/'))
-    .on('end', done);
+gulp.task('compile', 'Compile sass files and copy to src/css.', function (done) {
+    gulp.src('./src/scss/*.scss')
+        .pipe(sass({
+            errLogToConsole: true
+        }))
+        .pipe(gulp.dest('./src/css/'))
+        .on('end', done);
 });
 
 /** build dependency tasks
@@ -47,15 +48,19 @@ gulp.task('compile', 'Compile sass files and copy to src/css.',function (done) {
  * build index.html 
  */
 gulp.task('copy', ['copy-deps', 'copy-components'], buildIndex);
-gulp.task('copy-deps', function () {
-    gulp.src(index_deps.js.concat(index_deps.css), { base: 'src' })
-        .pipe(gulp.dest('build'));
-});
+gulp.task('copy-deps',
+    '',
+    function () {
+        gulp.src(index_deps.js.concat(index_deps.css), { base: 'src' })
+            .pipe(gulp.dest('build'));
+    });
 gulp.task('copy-components', function () {
     gulp.src(config.srcList, { base: 'src' })
         .pipe(gulp.dest('build'));
 });
-gulp.task('index', buildIndex);
+gulp.task('index',
+    'Adds CSS and JS files to index.html in build directory.',
+    buildIndex);
 
 /**
  * Below are one time build scripts to run for developement.
@@ -65,76 +70,62 @@ gulp.task('index', buildIndex);
  *    
  *    TODO: add protractor
  */
-gulp.task('watch', 'Watch src directory and copy to build.',function (cb) {
+gulp.task('watch', 'Watch src directory and copy to build.', function (cb) {
     watch(config.srcList, { base: 'src' })
-    .pipe(gulp.dest('build'))
-    .on('end', cb);;
+        .pipe(gulp.dest('build'))
+        .on('end', cb);;
 });
-gulp.task('run', function () {
-    gulp.src('build')
-        .pipe(webserver({
-            livereload: true,
-            directoryListing: false,
-            open: 'http://localhost:8080/seed/index.html',
-            port: '8080',
-            path: '/seed'
-        }));
-});
-gulp.task('test', function (done) {
-    new Server({
-        configFile: __dirname + '/karma.conf.js'
-    }, done).start();
-});
-
-
+gulp.task('run',
+    'Starts a local webserver and browser.  Reloads page when build directory changes.',
+    function () {
+        gulp.src('build')
+            .pipe(webserver({
+                livereload: true,
+                directoryListing: false,
+                open: 'http://localhost:8080/seed/index.html',
+                port: '8080',
+                path: '/seed'
+            }));
+    });
+gulp.task('test',
+    'Starts Karma test runner, for unit tests.',
+    function (done) {
+        new Server({
+            configFile: __dirname + '/karma.conf.js'
+        }, done).start();
+    });
+    
+gulp.task('e2e-test',
+    '',
+    function (done) {
+        gulp.src(["./src/test/*.js"])
+            .pipe(protractor({
+                configFile: "./protractor.conf.js",
+                args: ['--baseUrl', 'http://localhost:8080/seed/']
+            }))
+            .on('error', function (e) { throw e })
+    });
+    
 /**
  * Utility Functions:
  */
 function buildIndex() {
     var target = gulp.src('./src/index.html');
     // It's not necessary to read the files (will speed up things), we're only after their paths: 
-    var bowerFiles = gulp.src(index_deps.js.concat(index_deps.css), { base: 'src' , read: false });
-    var srcFiles = gulp.src(config.srcList, { base: 'src' , read: false  });
+    var bowerFiles = gulp.src(index_deps.js.concat(index_deps.css), { base: 'src', read: false });
+    var srcFiles = gulp.src(config.srcList, { base: 'src', read: false });
     var sources = merge(bowerFiles, srcFiles);
-    target.pipe(inject(sources, {relative: true}))
+    target.pipe(inject(sources, { relative: true }))
         .pipe(gulp.dest('build'));
 }
+
+
 
 /**
  * Dist tasks similar to build/copy but creates a distibution directory with 
  * concatinated and minified js and css files.
  */
-gulp.task('dist', ['dist-js', 'dist-css'], function () {
-    var target = gulp.src('./src/index.html');
-    // It's not necessary to read the files (will speed up things), we're only after their paths: 
-    var sources = gulp.src([
-        'dist/lib.css',
-        'dist/lib.js'
-    ], { read: false });
-
-    return target.pipe(inject(sources, { ignorePath: 'build', addRootSlash: false }))
-        .pipe(gulp.dest('dist'));
-});
-gulp.task('dist-js', function () {
-    var bowerFiles = gulp.src(index_deps.js);
-    var srcFiles = gulp.src('src/**/*.js');
-    merge(bowerFiles, srcFiles)
-        .pipe(concat('lib.js'))
-        .pipe(gulp.dest('dist'))
-        .pipe(uglify())
-        .pipe(rename('lib.min.js'))
-        .pipe(gulp.dest('dist'))
-        .on('error', gutil.log);
-});
-gulp.task('dist-css', function () {
-    var bowerFiles = gulp.src(CSSFiles);
-    var srcFiles = gulp.src('src/**/*.css');
-    merge(bowerFiles, srcFiles)
-        .pipe(concat('lib.css'))
-        .pipe(gulp.dest('dist'))
-        .pipe(minifyCSS())
-        .pipe(rename('lib.min.css'))
-        .pipe(gulp.dest('dist'))
-        .on('error', gutil.log);
-});
+gulp.task('dist', ['dist-js', 'dist-css'], dist.index);
+gulp.task('dist-js', dist.js);
+gulp.task('dist-css', dist.css);
 

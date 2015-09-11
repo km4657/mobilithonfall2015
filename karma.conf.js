@@ -2,12 +2,16 @@
 // Generated on Wed Sep 02 2015 09:19:49 GMT-0400 (EDT)
 
 
+var index_deps = require('./gulpfiles/index_deps')();
 var src=[
     "bower_components/angular-mocks/angular-mocks.js",
     "src/**/*.js"
 ]
- 
+var merged=index_deps.js.concat(src); 
 module.exports = function(config) {
+    merged=[
+    ANGULAR_SCENARIO,
+    ANGULAR_SCENARIO_ADAPTER].concat(merged);
   config.set({ 
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -16,16 +20,11 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['ng-scenario','jasmine'],
 
 
     // list of files / patterns to load in the browser
-    files: src,
-
-
-    // list of files to exclude
-    exclude: ['src/index.jsp'],
-
+    files: merged,
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor

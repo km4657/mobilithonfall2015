@@ -1,6 +1,7 @@
-/* global toastr:false, moment:false */
-(function() {
+(function () {
     'use strict';
 
+    angular.module('app.constants',[])
+        .value('version', '0.1');
+
 })();
- 
