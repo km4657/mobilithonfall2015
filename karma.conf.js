@@ -9,9 +9,6 @@ var src=[
 ]
 var merged=index_deps.js.concat(src); 
 module.exports = function(config) {
-    merged=[
-    ANGULAR_SCENARIO,
-    ANGULAR_SCENARIO_ADAPTER].concat(merged);
   config.set({ 
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
