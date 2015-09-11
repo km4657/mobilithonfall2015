@@ -7,7 +7,7 @@
                 .state('menu', {
                     url: '/menu',
                     abstract: true,
-                    templateUrl: 'components/menu/menu.html',
+                    templateUrl: 'components/pages/menu/menu.html',
                     controller: 'MenuCtrl as vm'
                 })
         })
@@ -33,7 +33,7 @@
         $scope.loginData = {};
 
         // Create the login modal that we will use later
-        $ionicModal.fromTemplateUrl('components/menu/login/login.html', {
+        $ionicModal.fromTemplateUrl('components/pages/menu/login/login.html', {
             scope: $scope
         }).then(function (modal) {
             vm.modal = modal;

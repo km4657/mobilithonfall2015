@@ -8,7 +8,8 @@
       'ngSanitize',
       'app.routes',
       'app.constants',
-      'components'
+      'components', 
+      'pages'
     ])
     .run(function ($ionicPlatform) {
       $ionicPlatform.ready(function () {

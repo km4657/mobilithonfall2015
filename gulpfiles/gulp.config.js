@@ -7,6 +7,7 @@ module.exports = function() {
         'src/templates/**/*',
         'src/app/**/*',
         'src/components/**/*',
+        'src/pages/**/*',
         'src/fonts/**/*',
         'src/css/**/*',
         '!src/**/*test*'
