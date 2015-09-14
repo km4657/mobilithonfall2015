@@ -8,7 +8,6 @@ var inject = require('gulp-inject');
 var gutil = require('gulp-util');
 var watch = require('gulp-watch');
 var webserver = require('gulp-webserver');
-var bower = require('bower');
 var sass = require('gulp-sass');
 var filesize = require('gulp-filesize');
 var clean = require('gulp-rimraf');
