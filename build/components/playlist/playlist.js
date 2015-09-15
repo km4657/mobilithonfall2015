@@ -15,9 +15,11 @@
                 })
         })
         .controller('PlaylistCtrl', PlaylistCtrl);
-
-    function PlaylistCtrl() {
+    
+    PlaylistCtrl.$inject=['$stateParams'];
+    function PlaylistCtrl($stateParams) {
         var vm = this;
+        vm.id = $stateParams.playlistId;
     };
 
 

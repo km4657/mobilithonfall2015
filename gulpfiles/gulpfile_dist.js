@@ -14,8 +14,8 @@ module.exports = function () {
         var target = gulp.src('./src/index.html');
         // It's not necessary to read the files (will speed up things), we're only after their paths: 
         var sources = gulp.src([
-            'dist/lib.css',
-            'dist/lib.js'
+            'dist/lib.min.css',
+            'dist/lib.min.js'
         ], { read: false });
 
         return target.pipe(inject(sources, { ignorePath: 'build', addRootSlash: false }))

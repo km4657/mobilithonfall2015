@@ -10,7 +10,7 @@ module.exports = function() {
         'src/pages/**/*',
         'src/fonts/**/*',
         'src/css/**/*',
-        '!src/**/*test*'
+        '!src/**/*_test.js'
     ]
     }
 return config;

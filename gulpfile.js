@@ -24,15 +24,20 @@ var config = require('./gulpfiles/gulp.config')();
 var dist = require('./gulpfiles/gulpfile_dist')();
 
 gulp.task('default', ['help']);
+
 gulp.task('start',
     'Starts webserver with auto reloads on src changes.',
     ['watch', 'run']);
+    
 gulp.task('build',
     'Performs all build tasks to create build directory.\n\t\t',
-    ['compile', 'copy', 'index']);
+    ['compile', 'copy', 'copy-index']);
+    
 gulp.task('clean', 'Delete build and dist directories.', function () {
-    return gulp.src(['build', 'dist'], { read: false }).pipe(clean());
+    return gulp.src(['build', 'dist'], { read: false })
+    .pipe(clean());
 });
+
 gulp.task('compile', 'Compile sass files and copy to src/css.', function (done) {
     gulp.src('./src/scss/*.scss')
         .pipe(sass({
@@ -46,18 +51,21 @@ gulp.task('compile', 'Compile sass files and copy to src/css.', function (done) 
  * Copy: bower-components, components to build src directory
  * build index.html 
  */
-gulp.task('copy', ['copy-deps', 'copy-components'], buildIndex);
+gulp.task('copy', ['copy-components', 'copy-deps'], buildIndex);
+
 gulp.task('copy-deps',
-    '',
+    'Copy bower files to build directory',
     function () {
         gulp.src(index_deps.js.concat(index_deps.css), { base: 'src' })
             .pipe(gulp.dest('build'));
     });
+    
 gulp.task('copy-components', function () {
     gulp.src(config.srcList, { base: 'src' })
         .pipe(gulp.dest('build'));
 });
-gulp.task('index',
+
+gulp.task('copy-index',
     'Adds CSS and JS files to index.html in build directory.',
     buildIndex);
 
@@ -74,6 +82,7 @@ gulp.task('watch', 'Watch src directory and copy to build.', function (cb) {
         .pipe(gulp.dest('build'))
         .on('end', cb);;
 });
+
 gulp.task('run',
     'Starts a local webserver and browser.  Reloads page when build directory changes.',
     function () {
@@ -86,6 +95,7 @@ gulp.task('run',
                 path: '/seed'
             }));
     });
+    
 gulp.task('test',
     'Starts Karma test runner, for unit tests.',
     function (done) {
@@ -118,13 +128,11 @@ function buildIndex() {
         .pipe(gulp.dest('build'));
 }
 
-
-
 /**
  * Dist tasks similar to build/copy but creates a distibution directory with 
  * concatinated and minified js and css files.
  */
-gulp.task('dist', ['dist-js', 'dist-css'], dist.index);
+gulp.task('dist', ['dist-css', 'dist-js'], dist.index);
 gulp.task('dist-js', dist.js);
 gulp.task('dist-css', dist.css);
 
