@@ -109,8 +109,7 @@ gulp.task('e2e-test',
     function (done) {
         gulp.src(["./src/test/*.js"])
             .pipe(protractor({
-                configFile: "./protractor.conf.js",
-                args: ['--baseUrl', 'http://localhost:8080/seed/']
+                configFile: "./protractor.conf.js"
             }))
             .on('error', function (e) { throw e })
     });

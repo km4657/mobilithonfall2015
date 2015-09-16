@@ -3,11 +3,12 @@
 
 
 var index_deps = require('./gulpfiles/index_deps')();
-var src=[
+var testSrc=[
     "bower_components/angular-mocks/angular-mocks.js",
     "src/**/*.js"
 ]
-var merged=index_deps.js.concat(src); 
+var merged=index_deps.js.concat(testSrc);
+
 module.exports = function(config) {
   config.set({ 
 
@@ -22,7 +23,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: merged,
-
+    exclude: ['src/test/*.js'],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {

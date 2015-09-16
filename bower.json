@@ -16,9 +16,9 @@
   "private": "true",
   "devDependencies": {
     "ionic": "driftyco/ionic-bower#1.1.0",
-    "angular": "~1.4.5",
-    "angular-mocks": "~1.4.5",
-    "angular-resource": "~1.4.5",
-    "angular-sanitize": "~1.4.5"
+    "angular": "~1.4.3",
+    "angular-mocks": "~1.4.3",
+    "angular-resource": "~1.4.3",
+    "angular-sanitize": "~1.4.3"
   }
 }

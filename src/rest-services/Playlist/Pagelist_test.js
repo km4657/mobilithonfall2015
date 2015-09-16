@@ -9,14 +9,14 @@ describe('rest-services.playlists', function () {
     var $httpBackend;
     beforeEach(module('rest-services.playlists'));
 
-    describe('Playlist.list', function () {
+    describe('Playlist getList()', function () {
 
         it('should return list of playlist', inject(function (Playlists) {
-            Playlists.getList();
+            Playlists.getList(); 
             expect(Playlists.list).toBeDefined();
         }));
 
-        it('should return user default = false', inject(function (Playlists, $injector) {
+        it('Playlists.list[0].title) should equal "Reggae"', inject(function (Playlists, $injector) {
             $httpBackend = $injector.get('$httpBackend');
             var playlist = [
                 { title: 'Reggae', id: 1 },
@@ -31,10 +31,14 @@ describe('rest-services.playlists', function () {
                 .respond(playlist);
 
             Playlists.getList();
+            console.log('I am here');
             $httpBackend.flush();
 
+           //     expect(Playlists.list[0].title).toEqual("Reggae");
+                
+                
             setTimeout(function () {
-                expect(Playlists.list[0].title).toEqual("Reggae");
+                expect(Playlists.list[0].title).toEqual("");
             }, 500);
         }));
     });

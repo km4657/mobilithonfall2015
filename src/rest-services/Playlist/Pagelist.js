@@ -4,18 +4,16 @@
     angular.module('rest-services.playlists', [])
         .factory('Playlists', Playlists);
 
-    Playlists.$inject = [];
+    Playlists.$inject = ['$http'];
 
-    function Playlists() {
+    function Playlists($http) {
         var vm = this;
-        vm.list=[
-            { title: 'Reggae', id: 1 },
-            { title: 'Chill', id: 2 },
-            { title: 'Dubstep', id: 3 },
-            { title: 'Indie', id: 4 },
-            { title: 'Rap', id: 5 },
-            { title: 'New Wave', id: 6 }
-        ]
+        vm.list = [];
+        vm.getList = function () {
+            $http.get('/rest/playlist').then(function(result){                
+                vm.list = result.data;
+            });
+        }
         return vm;
     }
 })();
