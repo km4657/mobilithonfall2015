@@ -25,7 +25,7 @@ describe('application header', function () {
     
   });
       var appHeader =  element(by.className('title'));
-        expect(appHeader.getText()).toMatch("Application header");
+        expect(appHeader.getText()).toMatch("Application Modules");
     });
 
 });
@@ -46,13 +46,13 @@ describe('ion tab 1', function () {
         
        var tabItem1 = element.all(by.css('ion-item')).first();
        
-       expect(tabItem1.getText()).toMatch('Playlist Menu');
+       expect(tabItem1.getText()).toMatch('Go to page: menu');
     });
      it('The value of the second item should This Page', function () {
         
        var lastTabItem = element.all(by.css('ion-item')).get(1);
        
-       expect(lastTabItem.getText()).toMatch('This page');
+       expect(lastTabItem.getText()).toMatch('Go to page: pagelist');
     });
 
 });
