@@ -6,6 +6,11 @@
  1. run: `npm install`
  2. run: `gulp build`
  3. run: `gulp start`
+
+## To run protractor (end to end testing)
+1. run: 'npm install -g protractor'
+2. run: 'webdriver-manager update'
+3. run: 'protractor protractor.conf.js'
  
 ## Reference John Papa's [Angularjs Style Guide](https://github.com/johnpapa/angular-styleguide "Angular Style Guide")
 
