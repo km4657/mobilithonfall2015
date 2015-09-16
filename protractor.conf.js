@@ -15,9 +15,12 @@ exports.config = {
     'browserName': 'chrome'
   },
 
+  baseUrl: 'http://localhost:8080/seed/',
+
   framework: 'jasmine',
 
   jasmineNodeOpts: {
     defaultTimeoutInterval: 30000
   }
 };
+
