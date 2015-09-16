@@ -6,6 +6,7 @@ module.exports = function() {
 	srcList: [
         'src/templates/**/*',
         'src/app/**/*',
+        'src/rest-services/**/*',
         'src/components/**/*',
         'src/pages/**/*',
         'src/fonts/**/*',

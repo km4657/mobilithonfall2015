@@ -6,10 +6,8 @@
       'ionic',
       'ngAnimate',
       'ngSanitize',
-      'app.routes',
-      'app.constants',
-      'components', 
-      'pages'
+      'ui.router',
+      'app'
     ])
     .run(function ($ionicPlatform) {
       $ionicPlatform.ready(function () {

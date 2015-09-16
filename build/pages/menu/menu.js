@@ -1,12 +1,16 @@
 (function () {
     'use strict';
 
-    angular.module('pages.menu', [])
-        .config(function ($stateProvider) {
+    angular.module('pages.menu', [
+        'pages.playlists',
+        'pages.playlist'])
+        .config(function ($stateProvider, $urlRouterProvider) {
+            /** Default route for page */
+            $urlRouterProvider.when('/menu', '/menu/playlists');
             $stateProvider
                 .state('menu', {
                     url: '/menu',
-                    abstract: true,
+                    abstract: 'true',
                     templateUrl: 'pages/menu/menu.html',
                     controller: 'MenuCtrl as vm'
                 })                

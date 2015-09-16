@@ -18,12 +18,12 @@
 
     <!-- build:css styles/app.css -->
     <!-- inject:css -->
+    <link rel="stylesheet" href="pages/pageList/pageList.css">
     <link rel="stylesheet" href="css/ionic.app.css">
     <link rel="stylesheet" href="css/ionic.css">
     <!-- endinject -->
     <!-- endbuild -->
 </head>
-<body>
     <body ng-app="starter">
     <ion-nav-view></ion-nav-view>
 
@@ -35,12 +35,15 @@
     <!-- build:js js/app.js -->
     <!-- inject:js -->
     <script src="lib/ionic.bundle.js"></script>
+    <script src="app/config.js"></script>
     <script src="app/constants.js"></script>
     <script src="app/module.js"></script>
     <script src="app/route.js"></script>
-    <script src="components/playlist/playlist.js"></script>
-    <script src="components/playlists/playlists.js"></script>
+    <script src="rest-services/Playlist/Pagelist.js"></script>
+    <script src="rest-services/rest-services.modules.js"></script>
     <script src="components/components.modules.js"></script>
+    <script src="pages/menu/playlist/playlist.js"></script>
+    <script src="pages/menu/playlists/playlists.js"></script>
     <script src="pages/pages.modules.js"></script>
     <script src="pages/menu/menu.js"></script>
     <script src="pages/pageList/pageList.js"></script>

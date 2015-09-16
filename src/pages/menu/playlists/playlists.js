@@ -1,14 +1,16 @@
 (function () {
     'use strict';
 
-    angular.module('controllers.playlists', [])
+    angular.module('pages.playlists', [
+        'rest-services.playlists'
+    ])
         .config(function ($stateProvider) {
             $stateProvider
                 .state('menu.playlists', {
                     url: '/playlists',
                     views: {
                         'menuContent': {
-                            templateUrl: 'components/playlists/playlists.html',
+                            templateUrl: 'pages/menu/playlists/playlists.html',
                             controller: 'PlaylistsCtrl as vm'
                         }
                     }
@@ -16,16 +18,10 @@
         })
         .controller('PlaylistsCtrl', PlaylistsCtrl);
 
-    function PlaylistsCtrl() {
+    PlaylistsCtrl.$inject = ['Playlists'];
+    function PlaylistsCtrl(Playlists) {
         var vm = this;
-        vm.playlists = [
-            { title: 'Reggae', id: 1 },
-            { title: 'Chill', id: 2 },
-            { title: 'Dubstep', id: 3 },
-            { title: 'Indie', id: 4 },
-            { title: 'Rap', id: 5 },
-            { title: 'New Wave', id: 6 }
-        ];
+        vm.playlists = Playlists;
     };
 
 

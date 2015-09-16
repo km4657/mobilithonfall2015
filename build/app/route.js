@@ -3,7 +3,7 @@
 
     angular
         .module('app.routes', [
-            'ui.router'
+            
          ])
         .config(function ($stateProvider, $urlRouterProvider) {
             // if none of the above states are matched, use this as the fallback

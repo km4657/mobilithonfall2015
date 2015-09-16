@@ -2,14 +2,14 @@
 (function () {
     'use strict';
 
-    angular.module('controllers.playlist', [])
+    angular.module('pages.playlist', [])
         .config(function ($stateProvider) {
             $stateProvider
                 .state('menu.single', {
                     url: '/playlists/:playlistId',
                     views: {
                         'menuContent': {
-                            templateUrl: 'components/playlist/playlist.html',
+                            templateUrl: 'pages/menu/playlist/playlist.html',
                             controller: 'PlaylistCtrl as vm'
                         }
                     }
