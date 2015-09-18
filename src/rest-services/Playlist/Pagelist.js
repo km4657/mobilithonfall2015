@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('rest-services.playlists', ['app.constants'])
-        .factory('Playlists', Playlists);
+        .service('Playlists', Playlists);
 
     Playlists.$inject = ['$http', 'RestConstants'];
 
@@ -20,7 +20,6 @@
             });
         }
         init();
-        return vm;
     }
 })();
 

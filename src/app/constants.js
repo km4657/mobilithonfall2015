@@ -5,6 +5,7 @@
         .value('version', '0.1')
         .constant('RestConstants',
 				{
-					'playlist' : '/rest/playlist'
+					'playlist' : '/rest/playlist',
+                                        'orderlist': '/rest/orderlist'
                 });
 })();
