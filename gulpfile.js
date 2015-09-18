@@ -23,19 +23,24 @@ var index_deps = require('./gulpfiles/index_deps')();
 var config = require('./gulpfiles/gulp.config')();
 var dist = require('./gulpfiles/gulpfile_dist')();
 
+
+var bowerFiles = gulp.src(index_deps.js.concat(index_deps.css), { base: 'src', read: false });
+var srcFiles = gulp.src(config.srcList, { base: 'src', read: false });
+var srcTestFiles = gulp.src(config.srcTestList, { base: 'src', read: false });
+
 gulp.task('default', ['help']);
 
 gulp.task('start',
     'Starts webserver with auto reloads on src changes.',
     ['watch', 'run']);
-    
+
 gulp.task('build',
     'Performs all build tasks to create build directory.\n\t\t',
     ['compile', 'copy', 'copy-index']);
-    
+
 gulp.task('clean', 'Delete build and dist directories.', function () {
     return gulp.src(['build', 'dist'], { read: false })
-    .pipe(clean());
+        .pipe(clean());
 });
 
 gulp.task('compile', 'Compile sass files and copy to src/css.', function (done) {
@@ -51,7 +56,9 @@ gulp.task('compile', 'Compile sass files and copy to src/css.', function (done) 
  * Copy: bower-components, components to build src directory
  * build index.html 
  */
-gulp.task('copy', ['copy-components', 'copy-deps'], buildIndex);
+gulp.task('copy', ['copy-test', 'copy-components', 'copy-deps'], buildIndex);
+
+gulp.task('copy-test','Copy test files to build directory',copyTest);
 
 gulp.task('copy-deps',
     'Copy bower files to build directory',
@@ -59,15 +66,10 @@ gulp.task('copy-deps',
         gulp.src(index_deps.js.concat(index_deps.css), { base: 'src' })
             .pipe(gulp.dest('build'));
     });
-    
-gulp.task('copy-components', function () {
-    gulp.src(config.srcList, { base: 'src' })
-        .pipe(gulp.dest('build'));
-});
 
-gulp.task('copy-index',
-    'Adds CSS and JS files to index.html in build directory.',
-    buildIndex);
+gulp.task('copy-components', 'Copy application source files', copyComponents);
+
+gulp.task('copy-index','Adds CSS and JS files to index.html in build directory.',buildIndex);
 
 /**
  * Below are one time build scripts to run for developement.
@@ -78,9 +80,11 @@ gulp.task('copy-index',
  *    TODO: add protractor
  */
 gulp.task('watch', 'Watch src directory and copy to build.', function (cb) {
-    watch(config.srcList, { base: 'src' })
-        .pipe(gulp.dest('build'))
-        .on('end', cb);;
+    watch('src/**/*', function() {
+        copyTest();
+        copyComponents();
+        buildIndex();
+    })
 });
 
 gulp.task('run',
@@ -95,7 +99,7 @@ gulp.task('run',
                 path: '/seed'
             }));
     });
-    
+
 gulp.task('test',
     'Starts Karma test runner, for unit tests.',
     function (done) {
@@ -103,7 +107,7 @@ gulp.task('test',
             configFile: __dirname + '/karma.conf.js'
         }, done).start();
     });
-    
+
 gulp.task('e2e-test',
     '',
     function (done) {
@@ -120,10 +124,19 @@ gulp.task('e2e-test',
 function buildIndex() {
     var target = gulp.src('./src/index.html');
     // It's not necessary to read the files (will speed up things), we're only after their paths: 
-    var bowerFiles = gulp.src(index_deps.js.concat(index_deps.css), { base: 'src', read: false });
-    var srcFiles = gulp.src(config.srcList, { base: 'src', read: false });
     var sources = merge(bowerFiles, srcFiles);
-    target.pipe(inject(sources, { relative: true }))
+    var src = merge(sources, srcTestFiles);
+
+    target.pipe(inject(src, { relative: true }))
+        .pipe(gulp.dest('build'));
+}
+function copyTest() {
+        console.log(config.srcTestList);
+        gulp.src(config.srcTestList, { base: 'src' })
+            .pipe(gulp.dest('build'));
+}
+function copyComponents() {
+    gulp.src(config.srcList, { base: 'src' })
         .pipe(gulp.dest('build'));
 }
 

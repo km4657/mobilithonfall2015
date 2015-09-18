@@ -3,8 +3,10 @@ module.exports = function() {
 	src: './src',
 	build: './build',
 	dist: './dist',
+	srcTestList: [
+        'src/test/**/*'
+    ],
 	srcList: [
-        'src/templates/**/*',
         'src/app/**/*',
         'src/rest-services/**/*',
         'src/components/**/*',

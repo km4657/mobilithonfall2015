@@ -3,6 +3,7 @@
 
   angular
     .module('app', [
+      'test',
       'app.routes',
       'app.constants',
       'rest-services',

@@ -16,8 +16,7 @@ describe('rest-services.playlists', function () {
             expect(Playlists.list).toBeDefined();
         }));
 
-        it('Playlists.list[0].title) should equal "Reggae"', inject(function (Playlists, $injector) {
-            $httpBackend = $injector.get('$httpBackend');
+        it('Playlists.list[0].title) should equal "Reggae"', inject(function (Playlists, $httpBackend) {
             var playlist = [
                 { title: 'Reggae', id: 1 },
                 { title: 'Chill', id: 2 },
@@ -32,14 +31,11 @@ describe('rest-services.playlists', function () {
 
             Playlists.getList();
             console.log('I am here');
+            
             $httpBackend.flush();
 
-           //     expect(Playlists.list[0].title).toEqual("Reggae");
+            expect(Playlists.list[0].title).toEqual("Reggae");
                 
-                
-            setTimeout(function () {
-                expect(Playlists.list[0].title).toEqual("");
-            }, 500);
         }));
     });
 });
