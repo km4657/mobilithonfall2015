@@ -6,15 +6,16 @@
                         .state('order', {
                             url: '/order',
                             templateUrl: 'pages/order/order.html',
-                            controller: 'orderCtrl as vm'
+                            controller: 'OrderCtrl as vm'
                         })
             })
-            .controller('orderCtrl', orderCtrl);
+            .controller('orderCtrl', OrderCtrl);
 
-    orderCtrl.$inject = [];
+    OrderCtrl.$inject = [];
 
-    function orderCtrl() {
+    function OrderCtrl() {
         var vm = this;
+        vm.id = $stateParams;
     }
 
 })();

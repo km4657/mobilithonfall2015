@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('rest-services.order', [])
+    angular.module('rest-services.orderlists', [])
             .service('OrderService', OrderService);
 
     OrderService.$inject = ['$http', 'RestConstants'];
@@ -11,19 +11,16 @@
         vm.list = [];
 
         return {
-            self: function () {
-                return vm;
+            init: function () {
+                vm.getList();
             },
             getList: function () {
                 $http.get(RestConstants.orderlist).then(function (result) {
                     vm.list = result.data;
                 });
-            },
-            init: function () {
-                vm.getList();
             }
-
         };
+        init();
     }
 
 
