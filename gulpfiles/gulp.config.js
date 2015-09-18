@@ -11,8 +11,7 @@ module.exports = function() {
         'src/rest-services/**/*',
         'src/components/**/*',
         'src/pages/**/*',
-        'src/fonts/**/*',
-        'src/css/**/*',
+        'src/assets/**/*',
         '!src/**/*_test.js'
     ]
     }

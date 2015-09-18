@@ -1,0 +1,125 @@
+<div id="headerDiv" class="ng-scope">
+	<nav class="navbar navbar-default ng-scope" role="navigation">
+		<div class="container-fluid bg-image">
+			<div class="oceheaderBg">
+				<div class="navbar-header">
+					<div class="navbuttondiv visible-sm">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#oceheader"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+					<div class="visible-sm pull-right globalsrch768">
+						<input id="extorderIdSm" placeholder="Order Number" name="extorderId" ng-model="extorderId" class="form-control ng-pristine ng-valid"
+						type="text"> <a class="searchGlobalSm" href="javascript:void(0);" ng-click="globalSearch(extorderId);"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>						<span class="searchVal lpad15" ng-click="searchTypeShow($event); $event.stopPropagation();"><span class="glyphicon glyphicon-chevron-down"></span></span>
+						<div class="searchULSm col-sm-2 ng-hide" ng-show="searchTypePop"><span class="glyphicon glyphicon-remove-circle pull-right" ng-click="closeSearchType();"></span>
+							<div class="marTB10 pull-left">
+								<div ng-click="globalSrchType('Order Number');">Order Number</div>
+								<div ng-click="globalSrchType('Account Id');">Account Id</div>
+								<div view-permission="CONTACTTRACKING" ng-click="globalSrchType('Case Id');">Case Id</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-5 col-xs-8 header-logo">
+						<a href="#"><img src="assets/images/logo.png" alt="logo" class="img-responsive"> <span class="att-site">AT&amp;T</span>							<span class="site-text">OCE</span> <span class="site-title visible-lg visible-md">Order Capture Engine</span></a>
+					</div>
+				</div>
+				<div class="collapse navbar-collapse hidden-md hidden-lg col-sm-12" id="oceheader" style="height: 1px; background-color: rgb(0, 115, 198); margin-left: 0px">
+					<ul class="nav navbar-nav" style="color:white;">
+						<li view-permission="QUEUES"><a href="#/orderqueue">Order Queue</a></li>
+						<li view-permission="SEARCH"><a href="#/ordersearch">Order Search</a></li>
+						<li view-permission="TASK"><a href="#/tasksearch">Task Search</a></li>
+						<!-- ngIf: app.csrChannel!='CRU' -->
+						<li ng-if="app.csrChannel!='CRU'" view-permission="CONTACTTRACKING" class="ng-scope"><a href="#/inboundtracker">Contact Tracker</a></li>
+						<!-- end ngIf: app.csrChannel!='CRU' -->
+						<li view-permission="TASK"><a href="#/mytasks">My Tasks</a></li>
+						<!-- ngIf: app.csrChannel!='CRU' -->
+						<li ng-if="app.csrChannel!='CRU'" view-permission="ESCALATIONS" class="ng-scope"><a href="#/escalation">Escalation</a></li>
+						<!-- end ngIf: app.csrChannel!='CRU' -->
+						<li class="adminDrop320" view-permission="ADMIN"><span class="dropdown-toggle">ADMIN TOOLS<span class="rightArrow"></span></span>
+							<ul class="dropdown-menu submenu320 hide">
+								<!-- ngIf: app.csrChannel=='CRU' -->
+								<li><a view-permission="ADMIN" href="#/admin/manageAlertMessages">Manage Alert Messages</a></li>
+								<li view-permission="UAM"><a href="#/manageusers">User Management</a></li>
+								<!-- ngIf: app.csrChannel=='CRU' -->
+								<li view-permission="ADMIN" class="adminHome"><a href="#/admin">Admin Dashboard</a></li>
+							</ul>
+						</li>
+						<li view-permission="UAM" mutual-field="admin"><a href="#/usersearch">User Search</a></li>
+					</ul>
+				</div>
+				<div class="navbar-form navbar-right pull-right left320">
+					<form name="headerForm" class="ng-pristine ng-valid">
+						<!-- ngIf: csrchannel != 'CRU' -->
+						<div class="visible-md visible-lg ng-scope" ng-if="csrchannel != 'CRU'">
+							<div class="hide searcherrordiv">
+								<p class="error text-left text-danger ng-hide" data-ng-show="headerForm.extorderId.$error.pattern">Please Enter a valid input.</p>
+							</div>
+							<input id="extorderId" placeholder="Order Number" name="extorderId" ng-model="extorderId" class="form-control ng-pristine ng-valid ng-valid-pattern"
+							type="text" data-ng-pattern="/[a-zA-Z0-9]/"> <a class="searchGlobal" href="javascript:void(0);" ng-click="globalSearch(extorderId,headerForm);"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></a>							<span class="searchVal" ng-click="searchTypeShow($event); $event.stopPropagation();"><span class="glyphicon glyphicon-chevron-down"></span></span>
+							<div class="searchUL col-sm-4 col-md-5 ng-hide" ng-show="searchTypePop"><span class="glyphicon glyphicon-remove-circle pull-right" ng-click="closeSearchType();"></span>
+								<div class="marTB10 pull-left">
+									<div ng-click="globalSrchType('Order Number');">Order Number</div>
+									<div ng-click="globalSrchType('Account Id');">Account Id</div>
+									<div view-permission="CONTACTTRACKING" ng-click="globalSrchType('Case Id');">Case Id</div>
+								</div>
+							</div>
+						</div>
+						<!-- end ngIf: csrchannel != 'CRU' -->
+					</form><span>Welcome <a href="#/user/profile/AC6841" class="ng-binding">ANIL CHEBOLU</a> <span class="hidden-xs">&nbsp;|&nbsp;</span></span>
+					<div class="channelDrop hidden-xs">Channel: <span class="channelVal ng-binding" ng-click="channelShow($event); $event.stopPropagation();"><span class="glyphicon glyphicon-chevron-down"></span>CDE-HS</span>
+					</div>
+					<ul class="channelUL hidden-xs ng-hide" ng-show="channelpop">
+						<li>Switch Channel to...</li>
+						<!-- ngRepeat: channel in channelList track by $index -->
+						<li ng-repeat="channel in channelList track by $index" ng-click="assignChannel(channel);" class="ng-binding ng-scope">CDE-HS</li>
+						<!-- end ngRepeat: channel in channelList track by $index -->
+					</ul>
+				</div>
+			</div>
+			<div id="oce-menu">
+				<div class="container">
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li view-permission="QUEUES"><a href="#/orderqueue">Order Queue</a></li>
+							<li view-permission="SEARCH"><a href="#/ordersearch">Order Search</a></li>
+							<!-- ngIf: app.csrChannel=='CRU' -->
+							<!-- ngIf: app.csrChannel!='CRU' -->
+							<li ng-if="app.csrChannel!='CRU'" view-permission="CONTACTTRACKING" class="ng-scope"><a href="#/inboundtracker">Contact Tracker</a></li>
+							<!-- end ngIf: app.csrChannel!='CRU' -->
+							<li view-permission="TASK"><a href="#/mytasks">My Tasks</a></li>
+							<!-- ngIf: app.csrChannel!='CRU' -->
+							<li ng-if="app.csrChannel!='CRU'" view-permission="ESCALATIONS" class="ng-scope"><a href="#/escalation">Escalation</a></li>
+							<!-- end ngIf: app.csrChannel!='CRU' -->
+							<li class="dropdown adminDrop" view-permission="ADMIN"><a class="dropdown-toggle" href="javascript:void(0);" aria-haspopup="true" aria-expanded="false">Admin Tools</a>
+								<ul class="dropdown-menu">
+									<!-- ngIf: app.csrChannel=='CRU' -->
+									<li view-permission="UAM"><a href="#/manageusers">User Management</a></li>
+									<!-- ngIf: app.csrChannel=='CRU' -->
+									<li view-permission="ADMIN" class="adminHome"><a href="#/admin">Admin Dashboard</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="channelDrop visible-xs col-xs-11" ng-click="channelShow(); $event.stopPropagation();"><span class="ng-binding">Channel: CDE-HS</span> <span class="glyphicon glyphicon-chevron-down pull-right"></span></div>
+			<ul class="channelUL hidden-sm hidden-md hidden-lg col-xs-11 ng-hide" ng-show="channelpop">
+				<li>Switch Channel to...</li>
+				<!-- ngRepeat: channel in channels track by $index -->
+				<li ng-click="assignChannel('OG');">OG</li>
+				<li ng-click="assignChannel('STAR');">STAR</li>
+			</ul>
+		</div>
+	</nav>
+	<!--div class="timer-wrapper ng-scope ng-hide" ng-show="showTimer">
+		<div class="row">
+			<div class="timerWrap">
+				<div class="inner_timerWrap">
+					<div class="input-group"><span class="input-group-btn"><button data-ng-disabled="app.isPageReadOnly ? true : !app.isCallStarted" type="button" class="btn btn-primary hidden-xs btnStartCall" data-ng-click="app.startCall()"><img alt="for timer" src="/ocetest/oceui/assets/images/icons/timer.png" class="timerImg"> Start Contact</button></span>
+						<timer autostart="false" interval="1000" class="form-control ng-binding ng-isolate-scope"><span class="ng-binding ng-scope">00m:00s</span></timer>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div-->
+</div>

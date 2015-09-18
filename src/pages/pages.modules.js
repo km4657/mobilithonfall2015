@@ -3,6 +3,7 @@
 
     angular.module('pages', [
         'pages.menu',
-        'pages.pagelist'
+        'pages.pagelist',
+        'pages.oce'
     ]);
 })();
