@@ -5,5 +5,6 @@
         'pages.menu',
         'pages.pagelist',
         'pages.order'
+        'pages.oce'
     ]);
 })();
