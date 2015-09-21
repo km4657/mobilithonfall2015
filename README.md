@@ -35,30 +35,30 @@
  `ERROR Message` : [List of actions to take.]
 
 ## Project config files structure
-.
-├──  README.md
-├──  gulpfile.js
-├──  gulpfiles
-|── ├──  gulp.config.js
-|── ├──  gulpfile_dist.js
-|── ├──  index_deps.js
-├──  package.json
-├──  bower.json
-├──  .bowerrc
-├──  karma.conf.js
-├──  protractor.conf.js
-├──  .gitignore
+.  
+├──  README.md  
+├──  gulpfile.js  
+├──  gulpfiles  
+|── ├──  gulp.config.js  
+|── ├──  gulpfile_dist.js  
+|── ├──  index_deps.js  
+├──  package.json  
+├──  bower.json  
+├──  .bowerrc  
+├──  karma.conf.js  
+├──  protractor.conf.js  
+├──  .gitignore  
 
 ## Source files structure
-./src
-├──  index.html
-├──  scss
-├──  css
-├──  fonts
-├──  lib
-├──  app
-├──  pages
-├──  components
-├──  rest-services
-├──  test
-|   
+./src  
+├──  index.html  
+├──  scss  
+├──  css  
+├──  fonts  
+├──  lib  
+├──  app  
+├──  pages  
+├──  components  
+├──  rest-services  
+├──  test  
+|     

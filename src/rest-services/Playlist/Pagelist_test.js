@@ -34,7 +34,7 @@ describe('rest-services.playlists', function () {
             
             $httpBackend.flush();
 
-            expect(Playlists.list[0].title).toEqual("Reggae");
+            expect(Playlists.list[0].title).toEqual("Reae");
                 
         }));
     });
