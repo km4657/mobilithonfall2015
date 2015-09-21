@@ -12,10 +12,11 @@
         })
         .controller('PageListCtrl', PageListCtrl);
 
-    PageListCtrl.$inject = [];
+    PageListCtrl.$inject = ['$log'];
 
-    function PageListCtrl() {
+    function PageListCtrl($log) {
         var vm = this;
+        $log.debug('NAME:::: '+this.constructor.name);
         vm.modules=angular.module('pages');        
         vm.app=angular.module('app');
         vm.getModules=function(m){

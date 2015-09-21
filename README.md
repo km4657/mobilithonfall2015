@@ -53,12 +53,11 @@
 ./src  
 ├──  index.html  
 ├──  scss  
-├──  css  
-├──  fonts  
+├──  assets
 ├──  lib  
 ├──  app  
 ├──  pages  
 ├──  components  
 ├──  rest-services  
 ├──  test  
-|     
+|──  e2e-test       

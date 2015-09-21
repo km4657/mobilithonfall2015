@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('rest-services', [
-        'rest-services.general-error-handler',
+        'rest-services.general-rest-handler',
         'rest-services.playlists'
     ]);
 

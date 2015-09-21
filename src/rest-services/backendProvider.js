@@ -1,12 +1,12 @@
 (function () {
     'use strict';
 
-    angular.module('rest-services.general-error-handler', [
+    angular.module('rest-services.general-rest-handler', [
     ])
-        .factory('generalErrorHandler', generalErrorHandler)
+        .factory('generalRestHandler', generalRestHandler)
         .config(backendProvider);
 
-    function generalErrorHandler() {
+    function generalRestHandler() {
         var self = {
             request: function (config) {
                 if (config.url === undefined) return config;
@@ -28,8 +28,7 @@
 
     backendProvider.$inject = ['$httpProvider'];
     function backendProvider($httpProvider) {
-        $httpProvider.interceptors.push('generalErrorHandler');
+        $httpProvider.interceptors.push('generalRestHandler');
     }
-
 
 })();

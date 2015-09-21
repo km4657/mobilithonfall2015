@@ -48,7 +48,7 @@ gulp.task('compile', 'Compile sass files and copy to src/css.', function (done) 
         .pipe(sass({
             errLogToConsole: true
         }))
-        .pipe(gulp.dest('./src/css/'))
+        .pipe(gulp.dest('./src/assets/css/'))
         .on('end', done);
 });
 
