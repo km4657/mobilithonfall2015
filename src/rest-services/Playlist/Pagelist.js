@@ -4,11 +4,10 @@
     angular.module('rest-services.playlists', ['app.constants'])
         .service('Playlists', Playlists);
 
-    Playlists.$inject = ['$http', 'RestConstants'];
+    Playlists.$inject = ['$log', '$http', 'RestConstants'];
 
-    function Playlists($http, RestConstants) {
+    function Playlists($log, $http, RestConstants) {
         var vm = this;
-        console.log('NAME:::: '+this.constructor.name);
         vm.list = [];
 
         function init() {

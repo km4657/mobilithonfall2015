@@ -4,8 +4,8 @@
     angular.module('components.oce-footer', ['app'])
         .directive('oceFooter', oceFooter);
 
-    oceFooter.$inject = [];
-    function oceFooter() {
+    oceFooter.$inject = ['$log'];
+    function oceFooter($log) {
         var oceFooter = {};
         oceFooter.restrict='E';
         oceFooter.transclude=true;

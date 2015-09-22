@@ -17,8 +17,8 @@
         })
         .controller('CRUOrderQueueCtrl', CRUOrderQueueCtrl);
 
-    CRUOrderQueueCtrl.$inject = [];
-    function CRUOrderQueueCtrl() {
+    CRUOrderQueueCtrl.$inject = ['$log'];
+    function CRUOrderQueueCtrl($log) {
         var vm = this;
     };
 

@@ -34,9 +34,9 @@
         })
         .controller('MenuCtrl', MenuCtrl);
 
-    MenuCtrl.$inject = ['$timeout', '$ionicModal', '$scope'];
+    MenuCtrl.$inject = ['$log', '$timeout', '$ionicModal', '$scope'];
 
-    function MenuCtrl($timeout, $ionicModal, $scope) {
+    function MenuCtrl($log, $timeout, $ionicModal, $scope) {
         var vm = this;
         // Open the login modal
         vm.login = function () {

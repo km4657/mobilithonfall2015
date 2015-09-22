@@ -6,6 +6,7 @@
       'test',
       'app.routes',
       'app.constants',
+      'app.exceptions',
       'rest-services',
       'components',
       'pages'

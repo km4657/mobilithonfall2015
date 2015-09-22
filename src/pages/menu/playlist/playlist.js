@@ -17,8 +17,8 @@
         })
         .controller('PlaylistCtrl', PlaylistCtrl);
     
-    PlaylistCtrl.$inject=['$stateParams'];
-    function PlaylistCtrl($stateParams) {
+    PlaylistCtrl.$inject=['$log', '$stateParams'];
+    function PlaylistCtrl($log, $stateParams) {
         var vm = this;
         vm.id = $stateParams.playlistId;
     };

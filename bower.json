@@ -20,5 +20,8 @@
     "angular-mocks": "~1.4.3",
     "angular-resource": "~1.4.3",
     "angular-sanitize": "~1.4.3"
+  },
+  "dependencies": {
+    "ngToast": "ngtoast#~1.5.6"
   }
 }

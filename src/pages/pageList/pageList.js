@@ -16,11 +16,20 @@
 
     function PageListCtrl($log) {
         var vm = this;
-        $log.debug('NAME:::: '+this.constructor.name);
         vm.modules=angular.module('pages');        
         vm.app=angular.module('app');
         vm.getModules=function(m){
-            return angular.module(m).requires;
+            var module = angular.module(m);
+            if ('pages'===m)
+                console.dir(module);
+            return module.requires;
+        }
+        
+        vm.getDetails=function(m){
+            var module = angular.module(m);
+            if ('pages'===m)
+                console.dir(module);
+            return module.requires;
         }
     }
 })();

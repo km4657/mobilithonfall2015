@@ -18,9 +18,9 @@
         })
         .controller('OCECtrl', OCECtrl);
 
-    OCECtrl.$inject = [];
+    OCECtrl.$inject = ['$log'];
 
-    function OCECtrl() {
+    function OCECtrl($log) {
         var vm = this;
     }
 })();

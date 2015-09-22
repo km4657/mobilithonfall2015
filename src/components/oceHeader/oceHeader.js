@@ -4,8 +4,8 @@
     angular.module('components.oce-header', ['app'])
         .directive('oceHeader', oceHeader);
 
-    oceHeader.$inject = [];
-    function oceHeader() {
+    oceHeader.$inject = ['$log'];
+    function oceHeader($log) {
         var oceHeader = {};
         oceHeader.restrict='E';
         oceHeader.transclude=true;

@@ -18,8 +18,8 @@
         })
         .controller('PlaylistsCtrl', PlaylistsCtrl);
 
-    PlaylistsCtrl.$inject = ['Playlists'];
-    function PlaylistsCtrl(Playlists) {
+    PlaylistsCtrl.$inject = ['$log', 'Playlists'];
+    function PlaylistsCtrl($log, Playlists) {
         var vm = this;
         vm.playlists = Playlists;
     };
