@@ -1,18 +1,18 @@
 [
     {
-        "ServiceType": "NEW",
-        "ServiceCategory": "DIRECTV",
+        "serviceType": "NEW",
+        "serviceCategory": "DIRECTV",
         "id": 1
         
     },
     {
-        "ServiceType": "CRU_UNLOCK",
-        "ServiceCategory": "IPTV",
+        "serviceType": "CRU_UNLOCK",
+        "serviceCategory": "IPTV",
         "id": 2
     },
     {
-        "OrderType": "DISCONNECT",
-        "ServiceCategory": "WIRELESS",
+        "serviceType": "DISCONNECT",
+        "serviceCategory": "WIRELESS",
         "id": 3
     }
 ]

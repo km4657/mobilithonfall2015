@@ -3,7 +3,7 @@
 
     angular.module('rest-services', [
         'rest-services.playlists',
-        'rest-services.orderlists'
+        'rest-services.orderlist'
     ]);
 
 })();

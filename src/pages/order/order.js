@@ -1,21 +1,20 @@
 (function () {
     'use strict';
-    angular.module('pages.order', [])
+    angular.module('pages.order', ['rest-services.orderlist'])
             .config(function ($stateProvider) {
                 $stateProvider
-                        .state('order', {
+                        .state('orderlist', {
                             url: '/order',
                             templateUrl: 'pages/order/order.html',
                             controller: 'OrderCtrl as vm'
                         })
             })
-            .controller('orderCtrl', OrderCtrl);
+            .controller('OrderCtrl', OrderCtrl);
 
-    OrderCtrl.$inject = [];
-
-    function OrderCtrl() {
+    OrderCtrl.$inject = ['OrderService'];
+    function OrderCtrl(OrderService) {
         var vm = this;
-        vm.id = $stateParams;
+        vm.orderlist = OrderService;
     }
 
 })();
