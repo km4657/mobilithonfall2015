@@ -9,7 +9,7 @@
                     url: '/cru-order-queue',
                     views: {
                         'oceContent': {
-                            templateUrl: 'pages/oce/cruOrderQueue/cruOrderQueue.html',
+                            templateUrl: 'app/pages/oce/cruOrderQueue/cruOrderQueue.html',
                             controller: 'CRUOrderQueueCtrl as vm'
                         }
                     }

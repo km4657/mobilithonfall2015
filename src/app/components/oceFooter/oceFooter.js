@@ -17,7 +17,7 @@
         };
         oceFooter.controller = oceFooterCtrl;
         oceFooter.controllerAs ='vm';
-        oceFooter.templateUrl = 'components/oceFooter/oceFooter.html';
+        oceFooter.templateUrl = 'app/components/oceFooter/oceFooter.html';
         return oceFooter;
     }
     

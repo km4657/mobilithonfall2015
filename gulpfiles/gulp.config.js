@@ -8,9 +8,6 @@ module.exports = function() {
     ],
 	srcList: [
         'src/app/**/*',
-        'src/rest-services/**/*',
-        'src/components/**/*',
-        'src/pages/**/*',
         'src/assets/**/*',
         '!src/**/*_test.js'
     ]

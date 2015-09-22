@@ -10,7 +10,7 @@
                     url: '/playlists',
                     views: {
                         'menuContent': {
-                            templateUrl: 'pages/menu/playlists/playlists.html',
+                            templateUrl: 'app/pages/menu/playlists/playlists.html',
                             controller: 'PlaylistsCtrl as vm'
                         }
                     }

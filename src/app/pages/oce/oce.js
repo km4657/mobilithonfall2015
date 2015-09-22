@@ -12,7 +12,7 @@
                 .state('oce', {
                     url: '/oce',
                     abstract: 'true',
-                    templateUrl: 'pages/oce/oce.html',
+                    templateUrl: 'app/pages/oce/oce.html',
                     controller: 'OCECtrl as vm'
                 })
         })

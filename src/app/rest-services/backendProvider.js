@@ -39,7 +39,7 @@
                         } 
                     } 
                 }, 5000);
-                $log.debug('ENTER general request code for ' + config.url + ' here!!!!');
+                $log.debug('ENTER general request code for ' + config.url + ' in backendProvider.js');
                 return config;
             },
             response: function (config) {
@@ -47,7 +47,17 @@
                 if ((config.config.url.indexOf(".html") > -1) ||
                     (config.config.url.indexOf(".json") > -1)) return config;
                 ngToast.dismiss(config.config.toast);
-                $log.debug('ENTER general response code ' + config.config.url + ' here!!!!, Status code is: ' + config.status);
+                $log.debug('ENTER general response code ' + config.config.url + ' in backendProvider.js, Status code is: ' + config.status);
+                
+                if (config.status!==200) {
+                            ngToast.create({
+                                className: 'danger',
+                                content: config.config.url + ': failed with status code of '+config.status,
+                                dismissOnClick: true,
+                                dismissOnTimeout: false,
+                                animation: 'slide',
+                            });
+                }
                 return config;
             }
         };

@@ -11,14 +11,14 @@
                 .state('menu', {
                     url: '/menu',
                     abstract: 'true',
-                    templateUrl: 'pages/menu/menu.html',
+                    templateUrl: 'app/pages/menu/menu.html',
                     controller: 'MenuCtrl as vm'
                 })                
                 .state('menu.search', {
                     url: '/search',
                     views: {
                         'menuContent': {
-                            templateUrl: 'pages/menu/templates/search.html'
+                            templateUrl: 'app/pages/menu/templates/search.html'
                         }
                     }
                 })
@@ -27,7 +27,7 @@
                     url: '/browse',
                     views: {
                         'menuContent': {
-                            templateUrl: 'pages/menu/templates/browse.html'
+                            templateUrl: 'app/pages/menu/templates/browse.html'
                         }
                     }
                 });
@@ -54,7 +54,7 @@
         $scope.loginData = {};
 
         // Create the login modal that we will use later
-        $ionicModal.fromTemplateUrl('pages/menu/login/login.html', {
+        $ionicModal.fromTemplateUrl('app/pages/menu/login/login.html', {
             scope: $scope
         }).then(function (modal) {
             vm.modal = modal;
