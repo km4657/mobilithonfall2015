@@ -1,14 +1,18 @@
 <ion-view>
     <ion-content>
         <div class="list card" ng-repeat="order in vm.orderlist.list">
-
-            <a href="#" class="item item-icon-left">
+            
+            <a href="#" class="item item-divider">
                 <i class="icon ion-home"></i>
-                {{order.serviceType}}
+                ORDER ID:{{order.id}}
             </a>
             <a href="#" class="item item-icon-left">
                 <i class="icon ion-home"></i>
-                {{order.serviceCategory}}
+                SERVICE TYPE:{{order.serviceType}}
+            </a>
+            <a href="#" class="item item-icon-left">
+                <i class="icon ion-home"></i>
+                CATEGORY:{{order.serviceCategory}}
             </a>
         </div>
 
