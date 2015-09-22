@@ -1,11 +1,11 @@
 (function () {
     'use strict';
-    angular.module('pages.order', ['rest-services.orderlist'])
+    angular.module('pages.order', ['rest-services.orderlist', 'app'])
             .config(function ($stateProvider) {
                 $stateProvider
                         .state('orderlist', {
                             url: '/order',
-                            templateUrl: 'pages/order/order.html',
+                            templateUrl: 'app/pages/order/order.html',
                             controller: 'OrderCtrl as vm'
                         })
             })
