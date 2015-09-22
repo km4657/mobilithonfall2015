@@ -6,6 +6,7 @@
       'ionic',
       'ngAnimate',
       'ngSanitize',
+      'ngToast',
       'ui.router',
       'app'
     ])

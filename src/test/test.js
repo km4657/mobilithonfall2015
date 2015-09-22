@@ -8,12 +8,12 @@
     ])
     .run(Test);
 
-  Test.$inject = ['$httpBackend'];
-  function Test($httpBackend) {
+  Test.$inject = ['$httpBackend', '$log'];
+  function Test($httpBackend, $log) {
     $httpBackend.whenGET(function (url) {
-      console.log(url);
       if (url.indexOf(".html") > -1) return true;
       if (url.indexOf(".json") > -1) return true;
+      $log.debug("test.js Debug Redirecting: "+url);
       return false;
     }).passThrough();
   }
