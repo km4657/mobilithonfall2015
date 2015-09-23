@@ -8,8 +8,10 @@
 ## Making Changes (Use Cases)
 ### New Page (Route)
 1. #### Create a new directory
-    1. ##### Creating a Template (.html) file.
-    2. ##### Create a Module (.js) file, Controllers, Services,
+    + ##### Create a new template (.html) file, that will serve as the view.
+    + ##### Create a new module (.js) file, that will provide the controller, services, etc.
+        + ##### Add the new page as a dependency to the pages module
+        + ##### Add any third party dependencies, and inter-project dependent dependencies to your module
 ### New RestService
 ### New Component (SiteHeader, OrderDetails....)
 ### New Unit Test
@@ -20,10 +22,22 @@
     3. ##### webdriver-manager start
 2. #### Configuration File
     1. ##### Create a configuration file "protractor.conf.js"
+        + ##### Key config properties
+            
+             + ###### SeleniumPort: The port which the selenium server will run on, if blank the server will find its own unused port
+             + seleniumAddress: The address of a running selenium server
+            + specs: Regular expressions and patterns relative to hte location of the config file
+            + exclude: All patterns to exclude
+            + capabilities: Browser configurations for testing a single browser.
+            + multicapabilities: Browser configuration for testing multiple browsers.
+            + rootElement: CSS Selector for the element that contains the angular app
+            + allScriptsTimeout: timeout in milliseconds for each script run on the browser
+            + getPageTimeout: how long to wait for a page to load
+            + framework: Test framework to use i.e: jasmine, jasmine2, mocha, etc
 3. #### Write a Test
     1. ##### Tests can be written easily using the Jasmine FrameWork [Jasmine.github.io](http://jasmine.github.io/2.3/introduction.html).
 4. #### Run The Test
-    1. ##### From the command line run the command protractor protractor.conf.js(file  name)
+    1. ##### From the command line run the command: protractor protractor.conf.js(file  name)
     
     
 
@@ -34,7 +48,11 @@
 ### Documentation
 
 ## Submitting Changes
-
+1. ##### Commit all changes locally
+2. ##### Pull from your forked repository
+3. ##### Push to your forked repository
+    + Rebase or merge changes accordingly
+4. ##### Make a pull request to the master repository
 # Additional Resources
 [Angularjs Style Guide from John Papa](https://github.com/johnpapa/angular-styleguide "Angularjs Style Guide")
 [Angularjs Unit Testing Guide](https://docs.angularjs.org/guide/unit-testing "Unit Testing")
