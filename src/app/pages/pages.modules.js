@@ -4,6 +4,7 @@
     angular.module('pages', [
         'pages.menu',
         'pages.pagelist',
-        'pages.oce'
+        'pages.oce',
+        'pages.order'
     ]);
 })();
