@@ -39,7 +39,7 @@ gulp.task('build',
     ['compile', 'copy', 'copy-index']);
 
 gulp.task('clean', 'Delete build and dist directories.', function () {
-    return gulp.src(['build', 'dist'], { read: false })
+    return gulp.src(['build', 'dist', 'report'], { read: false })
         .pipe(clean());
 });
 
@@ -117,7 +117,8 @@ gulp.task('e2e-test',
             }))
             .on('error', function (e) { throw e })
     });
-    
+
+gulp.task('plato', '', startPlatoVisualizer)   
 /**
  * Utility Functions:
  */
@@ -139,7 +140,28 @@ function copyComponents() {
     gulp.src(config.srcList, { base: 'src' })
         .pipe(gulp.dest('build'));
 }
+function startPlatoVisualizer(done) {
+    log('Running Plato');
 
+    var files = ['src/app/**/*.js'];
+    var excludeFiles = /.*\_test\.js/;
+    var plato = require('plato');
+
+    var options = {
+        title: 'Plato Inspections Report', 
+        jshint: '.jshintrc',
+        exclude: excludeFiles
+    };
+    var outputDir = 'report';
+
+    plato.inspect(files, outputDir, options, platoCompleted);
+
+    function platoCompleted(report) {
+        var overview = plato.getOverviewReport(report);
+        log(overview.summary);
+        if (done) { done(); }
+    }    
+}
 /**
  * Dist tasks similar to build/copy but creates a distibution directory with 
  * concatinated and minified js and css files.

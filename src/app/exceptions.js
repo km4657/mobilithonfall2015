@@ -12,9 +12,11 @@
         $provide.decorator('$exceptionHandler', extendExceptionHandler);
 
     }
+    
     // Extend the $exceptionHandler service to also display a toast.
-    extendExceptionHandler.inject = ['$delegate', 'ngToast', '$window']
-    function extendExceptionHandler($delegate, ngToast, $window) {
+    extendExceptionHandler.inject = ['$delegate', 'ngToast'];
+    
+    function extendExceptionHandler($delegate, ngToast) {
         var appErrorPrefix = 'myPrefix';
         return function (exception, cause) {
             $delegate(exception, cause);
@@ -26,7 +28,6 @@
                 className: 'danger',
                 content: msg
             });
-            console.log(appErrorPrefix, errorData)
         };
     }
 })();

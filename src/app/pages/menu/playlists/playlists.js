@@ -14,7 +14,7 @@
                             controller: 'PlaylistsCtrl as vm'
                         }
                     }
-                })
+                });
         })
         .controller('PlaylistsCtrl', PlaylistsCtrl);
 
@@ -22,7 +22,6 @@
     function PlaylistsCtrl($log, Playlists) {
         var vm = this;
         vm.playlists = Playlists;
-    };
-
+    }
 
 })();

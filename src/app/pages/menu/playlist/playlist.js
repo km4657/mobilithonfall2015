@@ -13,7 +13,7 @@
                             controller: 'PlaylistCtrl as vm'
                         }
                     }
-                })
+                });
         })
         .controller('PlaylistCtrl', PlaylistCtrl);
     
@@ -21,7 +21,7 @@
     function PlaylistCtrl($log, $stateParams) {
         var vm = this;
         vm.id = $stateParams.playlistId;
-    };
+    }
 
 
 })();

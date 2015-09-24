@@ -6,19 +6,20 @@
 
     oceFooter.$inject = ['$log'];
     function oceFooter($log) {
-        var oceFooter = {};
-        oceFooter.restrict='E';
-        oceFooter.transclude=true;
-        oceFooter.scope={};
-        oceFooter.bindToController= {
-            someObject: '=',
-            someString: '@',
-            someExpr: '&'
+        return {
+            restrict: 'E',
+            transclude: true,
+            scope: {},
+            bindToController: {
+                someObject: '=',
+                someString: '@',
+                someExpr: '&'
+            },
+            controller: oceFooterCtrl,
+            controllerAs: 'vm',
+            templateUrl: 'app/components/oceFooter/oceFooter.html',
+        
         };
-        oceFooter.controller = oceFooterCtrl;
-        oceFooter.controllerAs ='vm';
-        oceFooter.templateUrl = 'app/components/oceFooter/oceFooter.html';
-        return oceFooter;
     }
     
     oceFooterCtrl.$inject = [];

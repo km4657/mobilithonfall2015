@@ -8,7 +8,7 @@
                     url: '/pagelist',
                     templateUrl: 'app/pages/pageList/pageList.html',
                     controller: 'PageListCtrl as vm'
-                })
+                });
         })
         .controller('PageListCtrl', PageListCtrl);
 
@@ -21,14 +21,14 @@
         vm.getModules=function(m){
             var module = angular.module(m);
             return module.requires;
-        }
+        };
         
         vm.getDetails=function(m){
             var module = angular.module(m);
             if ('pages'===m)
                 console.dir(module);
             return module.requires;
-        }
+        };
     }
 })();
 

@@ -13,14 +13,12 @@
                             controller: 'CRUOrderQueueCtrl as vm'
                         }
                     }
-                })
+                });
         })
         .controller('CRUOrderQueueCtrl', CRUOrderQueueCtrl);
 
     CRUOrderQueueCtrl.$inject = ['$log'];
     function CRUOrderQueueCtrl($log) {
         var vm = this;
-    };
-
-
+    }
 })();
