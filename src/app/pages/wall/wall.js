@@ -22,6 +22,15 @@
                         }
                     }
                 })
+                
+                .state('wall.donate', {
+                    url: '/donate',
+                    views: {
+                        'wallContent': {
+                            templateUrl: 'app/pages/wall/templates/donate.html'
+                        }
+                    }
+                })
 
                 .state('wall.search', {
                     url: '/search',
