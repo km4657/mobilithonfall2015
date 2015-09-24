@@ -1,6 +1,6 @@
-# Angularjs Best Practices Seed project
+# mobilithonfall2015
 
-**Git Repository for OCEUI Enhancements**
+**Git Repository for BraveHackers**
 
 ## To install (on linux you may need to sudo npm install -g
  1. run: `git clone https://ml5174@codecloud.web.att.com/scm/~ml5174/masterseed.git`

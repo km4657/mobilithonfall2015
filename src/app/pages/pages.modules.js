@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('pages', [
-        'pages.menu',
+        'pages.wall',
         'pages.pagelist',
         'pages.oce',
         'pages.order'

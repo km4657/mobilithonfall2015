@@ -5,11 +5,11 @@
     angular.module('pages.playlist', [])
         .config(function ($stateProvider) {
             $stateProvider
-                .state('menu.single', {
+                .state('wall.single', {
                     url: '/playlists/:playlistId',
                     views: {
-                        'menuContent': {
-                            templateUrl: 'app/pages/menu/playlist/playlist.html',
+                        'wallContent': {
+                            templateUrl: 'app/pages/wall/playlist/playlist.html',
                             controller: 'PlaylistCtrl as vm'
                         }
                     }

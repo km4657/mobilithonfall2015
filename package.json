@@ -1,11 +1,11 @@
 {
-  "name": "MasterSeed",
+  "name": "mobilithonfall2015",
   "version": "0.0.1",
-  "description": "MasterSeed: Gulp, Ionic, Karma",
+  "description": "mobilithonfall2015: Gulp, Ionic, Karma",
   "license": "MIT",
   "licenses": {
     "type": "MIT",
-    "url": "https://codecloud.web.att.com/projects/ST_OCE/repos/ocefe/browse/LICENSE"
+    "url": "https://codecloud.web.att.com/projects/ST_OCE/repos/mobilithonfall2015/browse/LICENSE"
   },
   "dependencies": {
     "gulp": "^3.5.6",

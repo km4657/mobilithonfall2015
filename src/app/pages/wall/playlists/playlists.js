@@ -6,11 +6,11 @@
     ])
         .config(function ($stateProvider) {
             $stateProvider
-                .state('menu.playlists', {
+                .state('wall.playlists', {
                     url: '/playlists',
                     views: {
-                        'menuContent': {
-                            templateUrl: 'app/pages/menu/playlists/playlists.html',
+                        'wallContent': {
+                            templateUrl: 'app/pages/wall/playlists/playlists.html',
                             controller: 'PlaylistsCtrl as vm'
                         }
                     }

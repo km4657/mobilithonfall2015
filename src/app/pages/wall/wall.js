@@ -1,42 +1,51 @@
 (function () {
     'use strict';
 
-    angular.module('pages.menu', [
+    angular.module('pages.wall', [
         'pages.playlists',
         'pages.playlist'])
         .config(function ($stateProvider, $urlRouterProvider) {
             /** Default route for page */
-            $urlRouterProvider.when('/menu', '/menu/playlists');
+            $urlRouterProvider.when('/wall', '/wall/splash');
             $stateProvider
-                .state('menu', {
-                    url: '/menu',
+                .state('wall', {
+                    url: '/wall',
                     abstract: 'true',
-                    templateUrl: 'app/pages/menu/menu.html',
-                    controller: 'MenuCtrl as vm'
+                    templateUrl: 'app/pages/wall/wall.html',
+                    controller: 'wallCtrl as vm'
                 })                
-                .state('menu.search', {
+                .state('wall.splash', {
+                    url: '/splash',
+                    views: {
+                        'wallContent': {
+                            templateUrl: 'app/pages/wall/templates/splash.html'
+                        }
+                    }
+                })
+                     
+                .state('wall.search', {
                     url: '/search',
                     views: {
-                        'menuContent': {
-                            templateUrl: 'app/pages/menu/templates/search.html'
+                        'wallContent': {
+                            templateUrl: 'app/pages/wall/templates/search.html'
                         }
                     }
                 })
 
-                .state('menu.browse', {
+                .state('wall.browse', {
                     url: '/browse',
                     views: {
-                        'menuContent': {
-                            templateUrl: 'app/pages/menu/templates/browse.html'
+                        'wallContent': {
+                            templateUrl: 'app/pages/wall/templates/browse.html'
                         }
                     }
                 });
         })
-        .controller('MenuCtrl', MenuCtrl);
+        .controller('wallCtrl', wallCtrl);
 
-    MenuCtrl.$inject = ['$log', '$timeout', '$ionicModal', '$scope'];
+    wallCtrl.$inject = ['$log', '$timeout', '$ionicModal', '$scope'];
 
-    function MenuCtrl($log, $timeout, $ionicModal, $scope) {
+    function wallCtrl($log, $timeout, $ionicModal, $scope) {
         var vm = this;
         // Open the login modal
         vm.login = function () {
@@ -53,7 +62,7 @@
         $scope.loginData = {};
 
         // Create the login modal that we will use later
-        $ionicModal.fromTemplateUrl('app/pages/menu/login/login.html', {
+        $ionicModal.fromTemplateUrl('app/pages/wall/login/login.html', {
             scope: $scope
         }).then(function (modal) {
             vm.modal = modal;
