@@ -3,7 +3,8 @@
 
     angular.module('components', [
         'components.oce-header',
-        'components.oce-footer'
+        'components.oce-footer',
+        'components.aoc'
     ]);
 
 })();

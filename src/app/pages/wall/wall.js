@@ -2,8 +2,9 @@
     'use strict';
 
     angular.module('pages.wall', [
-        'pages.playlists',
-        'pages.playlist'])
+        'pages.search',
+        'ngAnimate'
+        ])
         .config(function ($stateProvider, $urlRouterProvider) {
             /** Default route for page */
             $urlRouterProvider.when('/wall', '/wall/splash');
@@ -22,7 +23,7 @@
                         }
                     }
                 })
-                
+
                 .state('wall.donate', {
                     url: '/donate',
                     views: {
@@ -32,11 +33,11 @@
                     }
                 })
 
-                .state('wall.search', {
-                    url: '/search',
+                .state('wall.visualsearch', {
+                    url: '/visualsearch',
                     views: {
                         'wallContent': {
-                            templateUrl: 'app/pages/wall/templates/search.html'
+                            templateUrl: 'app/pages/wall/templates/visualsearch.html'
                         }
                     }
                 })
@@ -49,6 +50,27 @@
                         }
                     }
                 });
+        })
+        .animation('.fade', function () {
+            return {
+                enter: function (element, done) {
+                    element.css('display', 'none');
+                    $(element).fadeIn(1000, function () {
+                        done();
+                    });
+                },
+                leave: function (element, done) {
+                    $(element).fadeOut(1000, function () {
+                        done();
+                    });
+                },
+                move: function (element, done) {
+                    element.css('display', 'none');
+                    $(element).slideDown(500, function () {
+                        done();
+                    });
+                }
+            }
         })
         .controller('wallCtrl', wallCtrl);
 
