@@ -36,7 +36,7 @@ gulp.task('start',
 
 gulp.task('build',
     'Performs all build tasks to create build directory.\n\t\t',
-    ['compile', 'copy', 'copy-index']);
+    ['copy', 'copy-index']);
 
 gulp.task('clean', 'Delete build and dist directories.', function () {
     return gulp.src(['build', 'dist', 'report'], { read: false })
