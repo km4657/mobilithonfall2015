@@ -6,6 +6,12 @@
         .constant('RestConstants',
 				{
 					'playlist' : '/rest/playlist',
-                                        'orderlist': '/rest/orderlist'
+                    'orderlist': '/rest/orderlist',
+					'playlists' : '/rest/playlist&name={listname}',
+                    
+/**
+ * Mocked out URLs 
+ */               
+					'reggae' : '/rest/playlist&name=reggae'    
                 });
 })();
