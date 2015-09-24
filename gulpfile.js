@@ -8,7 +8,6 @@ var inject = require('gulp-inject');
 var gutil = require('gulp-util');
 var watch = require('gulp-watch');
 var webserver = require('gulp-webserver');
-var sass = require('gulp-sass');
 var filesize = require('gulp-filesize');
 var clean = require('gulp-rimraf');
 var merge = require('gulp-merge');
@@ -36,20 +35,11 @@ gulp.task('start',
 
 gulp.task('build',
     'Performs all build tasks to create build directory.\n\t\t',
-    ['compile', 'copy', 'copy-index']);
+    ['copy', 'copy-index']);
 
 gulp.task('clean', 'Delete build and dist directories.', function () {
     return gulp.src(['build', 'dist', 'report'], { read: false })
         .pipe(clean());
-});
-
-gulp.task('compile', 'Compile sass files and copy to src/css.', function (done) {
-    gulp.src('./src/scss/*.scss')
-        .pipe(sass({
-            errLogToConsole: true
-        }))
-        .pipe(gulp.dest('./src/assets/css/'))
-        .on('end', done);
 });
 
 /** build dependency tasks
