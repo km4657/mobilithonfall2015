@@ -3,7 +3,7 @@
 
     angular.module('pages.wall', [
         'pages.search',
-        'ngAnimate'
+        'pages.panels'
         ])
         .config(function ($stateProvider, $urlRouterProvider) {
             /** Default route for page */
@@ -51,36 +51,12 @@
                     }
                 });
         })
-        .animation('.fade', function () {
-            return {
-                enter: function (element, done) {
-                    element.css('display', 'none');
-                    $(element).fadeIn(1000, function () {
-                        done();
-                    });
-                },
-                leave: function (element, done) {
-                    $(element).fadeOut(1000, function () {
-                        done();
-                    });
-                },
-                move: function (element, done) {
-                    element.css('display', 'none');
-                    $(element).slideDown(500, function () {
-                        done();
-                    });
-                }
-            }
-        })
         .controller('wallCtrl', wallCtrl);
 
-    wallCtrl.$inject = ['$log', '$ionicSlideBoxDelegate'];
+    wallCtrl.$inject = ['$log'];
 
-    function wallCtrl($log, $ionicSlideBoxDelegate) {
+    function wallCtrl($log) {
         var vm = this;
-        vm.nextSlide = function () {
-            $ionicSlideBoxDelegate.next();
-        }
     }
 })();
 

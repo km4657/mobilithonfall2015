@@ -3,7 +3,6 @@
     'use strict';
 
     angular.module('pages.search', [
-        'components.aoc'
     ])
         .config(function ($stateProvider) {
             $stateProvider

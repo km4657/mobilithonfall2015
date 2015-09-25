@@ -1,4 +1,4 @@
-<ion-view view-title="">
+<ion-view view-title="Wall">
   <style>
     #slide-box{
       width: 100%;
@@ -40,23 +40,11 @@
       }
     }
   </style>
-  <ion-slide-box id="slide-box" on-slide-changed="slideHasChanged($index)" show-pager="false">
-    <ion-slide>
-        <div id="splash">
-          <div id="explore-container">
-            <a href="#/wall/panels">
-              <button id="explore">
-                  < EXPLORE 
-              </button>
-            </a>
-          </div>
-      </div>
+  <ion-slide-box id="slide-box" on-slide-changed="slideHasChanged($index)" show-pager="false" >
+    
+    <ion-slide ng-repeat="panelID in vm.panelList track by $index">
+        <panel panelid="panelID" render="$index"></panel>
     </ion-slide>
-    <ion-slide style="display: inline-block;">
-      <div style="display: inline-block;background-color: green;heigth: 100%; width: 100%;">
-        <h1 style="position: absolute; top: 50%;left:30%;">LOCATION OF WALL</h1>
-      </div>
-    </ion-slide>
+    
   </ion-slide-box>
-
 </ion-view>
