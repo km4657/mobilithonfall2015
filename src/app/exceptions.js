@@ -26,6 +26,8 @@
             var msg = appErrorPrefix + exception.message;
             ngToast.create({
                 className: 'danger',
+                dismissOnClick: true,
+                dismissOnTimeout: false,
                 content: msg
             });
         };
