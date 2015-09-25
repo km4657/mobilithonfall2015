@@ -23,7 +23,7 @@
     function panelsCtrl($log, $scope, $ionicSlideBoxDelegate, $timeout) {
         var vm = this;
         vm.panelList = [];
-        for (var i = 0; i < 140; i++) {
+        for (var i = 1; i < 141; i++) {
             vm.panelList[i] = i;
         }
         vm.setSlide=function() {
@@ -32,6 +32,12 @@
         $timeout(function() {
             vm.setSlide();
         }, 500);
+        vm.slideHasChanged = function($index) {
+            vm.currentPanel=$index;   
+        }
+        vm.changePage=function() {
+            $ionicSlideBoxDelegate.slide(vm.currentPanel);
+        }
     }
 
 })();

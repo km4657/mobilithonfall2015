@@ -1,9 +1,10 @@
-<ion-view view-title="Wall">
+<ion-view view-title="Panel {{vm.currentPanel}}">
   <style>
-    #slide-box{
+    #slide-box {
       width: 100%;
       height: 100%;
     }
+    
     #splash {
       background-color: white;
       width: 100%;
@@ -38,13 +39,38 @@
         width: 100%;
         height: 100%;
       }
+      #panel-list-container {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+      }
+      #panel-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        height: 81px;
+      }
+      .panel-small {
+        background-color: black;
+        color: white;
+        height: 30px;
+        border: none;
+      }
     }
   </style>
-  <ion-slide-box id="slide-box" on-slide-changed="slideHasChanged($index)" show-pager="false" >
-    
+  <ion-slide-box id="slide-box" on-slide-changed="vm.slideHasChanged($index)" show-pager="false">
     <ion-slide ng-repeat="panelID in vm.panelList track by $index">
-        <panel panelid="panelID" render="$index"></panel>
+      <panel panelid="panelID" render="$index"></panel>
     </ion-slide>
-    
   </ion-slide-box>
+  <section id="panel-list-container">
+    
+    <div class="list panel-small">
+      <div class="item range range-positive panel-small">
+        <input type="range" name="volume" min="1" max="140" ng-model="vm.currentPanel" ng-change="vm.changePage()">
+      </div>
+    </div>
+  </section>
 </ion-view>

@@ -53,9 +53,9 @@
         })
         .controller('wallCtrl', wallCtrl);
 
-    wallCtrl.$inject = ['$log'];
+    wallCtrl.$inject = ['$log', '$ionicSideMenuDelegate'];
 
-    function wallCtrl($log) {
+    function wallCtrl($log, $ionicSideMenuDelegate) {
         var vm = this;
     }
 })();
