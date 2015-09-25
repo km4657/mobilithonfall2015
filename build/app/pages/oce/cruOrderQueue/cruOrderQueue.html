@@ -1,0 +1,93 @@
+<div >
+	<div id="serverMessage_wrap" ng-if="false">
+		<div class="servErrorMsg ng-binding ng-hide" ng-class="{showMessages:app.servMsg != &quot;&quot;}" data-ng-show="app.serverError"
+		ng-bind="app.servMsg"></div>
+		<div class="servSuccessMsg ng-binding ng-hide" ng-class="{showMessages:app.servSuccessMsg != &quot;&quot;}" data-ng-show="app.servSuccess"
+		data-ng-bind="app.servSuccessMsg"></div>
+	</div>
+	<!-- ngView:  -->
+	<div id="page" data-ng-view="" class="page_wrap ng-scope" ng-if="true">
+		<!-- ngInclude: templateurl -->
+		<div>
+			<div class="orderQueueStarOG ng-scope">
+				<div class="container queueTop clear">
+					<div class="floatleft">
+						<h4>Order Queue - Unified Consumer and IRU</h4></div>
+					<div class="col-md-3 col-xs-12 taskPrwContainer ng-hide" ng-show="myTaskDisplay">
+						<div class="col-md-6 col-xs-6"><b>Order Number</b></div>
+						<div class="col-md-6 col-xs-6"><b>Status</b></div>
+						<!-- ngRepeat: task in opentaskitems --><a href="#/mytasks">More &gt;&gt;</a></div>
+					<div class="pull-right refresh"><a href="javascript:void(0);" data-ng-click="reloadRoute()" class="pull-right pointer refreshicon">Refresh <span id="refresh" class="refresh_icon"></span></a></div>
+					<div class="pull-right vendorLink"><span class="channelVal" ng-click="openVendorPop();"><span class="glyphicon glyphicon-chevron-down"></span>Partner(s):</span>
+						<span class="ng-binding">STI,SGS</span>
+					</div>
+					<div class="col-md-12 col-sm-12 vendorPopup ng-hide"  ng-if="false">
+						<p class="col-md-10 col-sm-10">Select Partner(s):</p><span class="glyphicon glyphicon-remove-circle pull-right vendorClose" ng-click="closeVendorPop();"></span>
+						<form id="vendorForm" name="vendorForm" class="ng-pristine ng-valid">
+							<!-- ngRepeat: vendor in vendorsData -->
+							<div class="clear col-md-10 ng-scope" ng-repeat="vendor in vendorsData">
+								<input type="checkbox" value="STI" ng-checked="vendor.checked" checked="checked"><span class="ng-binding">STI</span></div>
+							<!-- end ngRepeat: vendor in vendorsData -->
+							<div class="clear col-md-10 ng-scope" ng-repeat="vendor in vendorsData">
+								<input type="checkbox" value="SGS" ng-checked="vendor.checked" checked="checked"><span class="ng-binding">SGS</span></div>
+							<!-- end ngRepeat: vendor in vendorsData -->
+							<div class="buttons"><a href="javascript:void(0);" ng-click="closeVendorPop();">Cancel</a>
+								<button class="btn btn-primary" ng-click="saveVendor('vendorForm');">OK</button>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="noQueue" style="line-height: 1.428571429;" >No Queue Found</div>
+				<div class="clear col-md-12 col-sm-12 displayByWrap ng-hide">
+					<div class="col-lg-4 col-md-3 col-sm-4 filterBy pull-left">
+						<div class="displayBy">Display By
+							<select ng-change="displayByChanged(displayBy)" data-ng-model="displayBy" data-ng-options="item for item in displayList"
+							class="marleft5 width55Percent displaypadding ng-pristine ng-valid">
+								<option value="0">Program View</option>
+								<option value="1">Queue View</option>
+							</select>
+						</div>
+						<div class="summary"></div>
+					</div>
+					<div class="col-xs-12 col-md-7 col-sm-8 col-lg-6 displaydata_barparent">
+						<div id="orders" class="displaydata_bar"><span id="TotalOrders">Total Orders: <span class="ng-binding"></span></span>
+						</div>
+						<div id="duration" class="displaydata_bar"><span>Oldest: <span class="ng-binding">0<b>d</b> 0<b>h</b> 0<b>m</b></span></span>
+						</div>
+						<div class="displaydata_bar"><span>Newest: <span class="ng-binding">0<b>d</b> 0<b>h</b> 0<b>m</b></span></span>
+						</div>
+					</div>
+				</div>
+				<div class="slaHelp ng-hide" ng-show="slaPop">
+					<h4 class="col-md-10" style="padding-left: 0">SLA Legend</h4><span class="glyphicon glyphicon-remove-circle pull-right slaClose" ng-click="closeSLAPop();"></span>
+					<div class="clear"><span class="sla Red pull-left"></span><span ng-bind="slalegend.red" class="ng-binding"></span></div>
+					<div><span class="sla Amber pull-left"></span><span ng-bind="slalegend.amber" class="ng-binding"></span></div>
+					<div><span class="sla Green pull-left"></span><span ng-bind="slalegend.green" class="ng-binding"></span></div>
+				</div>
+				<!-- ngRepeat: queue in queues -->
+				<div style="visibility:hidden">
+					<button value="Claim ALL Open Tasks" ng-disabled="app.isPageReadOnly" data-ng-click="ClaimALLTasks()" class="nxtLink">Claim All Task</button>
+					<button value="Close ALL Open Tasks" ng-disabled="app.isPageReadOnly" data-ng-click="CloseAllTasks()" class="nxtLink">Close All Open Task</button>
+					<button value="Release ALL Open Tasks" ng-disabled="app.isPageReadOnly" data-ng-click="ReleaseAllTask()" class="nxtLink">Release All Task</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ngInclude:  -->
+	<div id="error_wrap" ng-if="false" class="ng-scope ng-hide">
+		<div id="bannerBGTop" class="ng-scope"><img border="0" src="" alt="AT&amp;T Logo and Circles" width="723" height="317"></div>
+		<div id="headLine" class="ng-scope">
+			<h2>We're sorry! There's a problem.</h2>
+			<p>Usually this means that an unexpected error occurred while processing your request.
+				<br>Here's what you can try next:
+				<br>
+			</p>
+			<div class="wrap">
+				<ul>
+					<li>Try again. The problem may be temporary.</li>
+					<li>Go to the <a href="#/home">Home Page.</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

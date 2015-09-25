@@ -1,0 +1,54 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <style>
+     button.hamberger:before{
+       color: white;background-color: #132551;
+    border-radius: 50%;width:32px;height:32px;font-size: 20px;padding: 0;margin: 0;
+     }
+  </style>
+  <ion-side-menu-content drag-content="false">
+    <ion-nav-bar>
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon ion-navicon hamberger" menu-toggle="left"  ng-hide="$exposeAside.active">
+        </button>
+      </ion-nav-buttons>
+
+      <ion-nav-buttons side="right">
+        <a href="#/wall/search">
+        <button class="button button-icon ion-search" style="color: silver;" >
+        </button>
+        </a>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="wallContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" expose-aside-when="large">
+    <ion-header-bar>
+      <h1 class="title" style="color:white">Left</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close href="#/wall/panels">
+          View Wall
+        </ion-item>
+        <ion-item menu-close href="#/wall/search">
+          Visual Search
+        </ion-item>
+        <ion-item menu-close href="#/wall/browse">
+          Calendar
+        </ion-item>
+        <ion-item menu-close href="#/wall/browse">
+          Education Center
+        </ion-item>
+        <ion-item menu-close href="#/wall/donate">
+          Donate
+        </ion-item>
+        <ion-item menu-close href="#/wall/splash">
+          About
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>
