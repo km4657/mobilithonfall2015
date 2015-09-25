@@ -3,41 +3,12 @@
     #slide-box {
       width: 100%;
       height: 100%;
-    }
-    
-    #splash {
-      background-color: white;
-      width: 100%;
-      height: 100%;
-    }
-    
-    @media all and (orientation: portrait) {
-      #splash {
-        background-image: url('assets/images/splash-portrait.png');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-      }
-    }
-    
-    @media all and (orientation: landscape) {
+    } 
       #splash {
         background-image: url('assets/images/splash-landscape.png');
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-position: center;
-      }
-      #explore {
-        background-color: white;
-        border: none;
-        position: absolute;
-        right: 20px;
-        bottom: 20px;
-      }
-      #explore-container {
-        position: relative;
-        width: 100%;
-        height: 100%;
       }
       #panel-list-container {
         position: absolute;
@@ -58,7 +29,6 @@
         height: 30px;
         border: none;
       }
-    }
   </style>
   <ion-slide-box id="slide-box" on-slide-changed="vm.slideHasChanged($index)" show-pager="false">
     <ion-slide ng-repeat="panelID in vm.panelList track by $index">
