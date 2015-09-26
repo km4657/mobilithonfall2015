@@ -4,6 +4,7 @@
     angular.module('pages.wall', [
         'pages.search',
         'pages.panels',
+        'pages.visual-search',
         'ngToast'
     ])
             .config(function ($stateProvider, $urlRouterProvider) {
