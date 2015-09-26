@@ -27,7 +27,7 @@
             vm.panelList[i] = i;
         }
         vm.setSlide=function() {
-            $ionicSlideBoxDelegate.slide(50);
+            $ionicSlideBoxDelegate.slide(114);
         }
         $timeout(function() {
             vm.setSlide();

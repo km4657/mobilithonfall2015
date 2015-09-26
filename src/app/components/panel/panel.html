@@ -13,11 +13,13 @@
 		}
 		.panel-row {
 			position: relative;
+                        display: inline-block;
 			margin: 10px;
 			padding: 10px;
 		}
 		.panel-column {
 			position: relative;
+                        display: inline-block;
 			margin: 10px;
 			padding: 10px;
 		}
@@ -25,13 +27,13 @@
 			color: white;
 		}
 	</style>
-	<div id="panel">
-		<div class="panel-row">
-			<div class="panel-column">
-				<h1 class="panel-name">PANEL #{{vm.panelid}}</h1>
-				<h3 class="panel-name" ng-if="vm.show()"> * {{vm.panelid}} * </h3>
-				
+<h1 class="panel-name">PANEL #{{panelid}}</h1>
+	<div id="panel" ng-if="show()" ng-init="getNames()">
+		<div class="panel-row" ng-repeat="r in rows track by $index">
+			<div class="panel-column" ng-repeat="vet in r track by $index" >
+				<h3 class="panel-name"> * {{vet.wallName}} {{$parent.$index}},{{$index}} * </h3>	
 			</div>
+                    
 		</div>	
 	</div>	
 </section>
