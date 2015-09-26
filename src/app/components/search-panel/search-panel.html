@@ -1,0 +1,14 @@
+
+<section id="search" ng-show="vm.SearchString.isSearching" ng-init="vm.SearchString.isSearching = false;">
+    <label class="item item-input">
+        <button class="button button-icon ion-search searchicon" 
+                ng-click="vm.SearchString.isSearching = !vm.SearchString.isSearching;">
+        </button>
+        <input type="search" placeholder="Search" ng-model="vm.SearchString.searchValue">
+        <a href="#/wall/visual-search">
+            <button class="button button-icon ion-camera searchicon" 
+                    ng-click="vm.SearchString.isSearching = !vm.SearchString.isSearching;">
+            </button>
+        </a>
+    </label>
+</section> 

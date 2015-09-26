@@ -1,4 +1,4 @@
-<ion-view view-title="Search">
+<ion-view view-title="Visual Search">
   <style>
     #keyboard {
       position: absolute;
@@ -54,9 +54,7 @@
       <button ng-click="vm.search()">Search from image.</button>
       <h1>{{vm.searchText}}</h1>
   <div class="cropArea">
-    <img-crop image="myImage" area-type="rectangle" area-min-size="40" result-image="myCroppedImage"></img-crop>
+    <img-crop image="myImage" area-type="rectangle" area-min-size="1" result-image="myCroppedImage"></img-crop>
   </div>                                 
-  <div>Cropped Image:</div> 
-  <div><canvas id="cropped"> </canvas></div>    
   </ion-content>
 </ion-view>

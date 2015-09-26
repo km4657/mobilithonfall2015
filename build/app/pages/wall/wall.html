@@ -32,24 +32,11 @@
             <ion-nav-buttons side="right">
                 <button class="button button-icon ion-search" 
                         style="color: silver;" 
-                        ng-click="vm.isSearching = !vm.isSearching;">
+                        ng-click="vm.SearchString.isSearching = !vm.SearchString.isSearching;">
                 </button>
             </ion-nav-buttons>
         </ion-nav-bar>
-
-        <section id="search" ng-show="vm.isSearching" ng-init="vm.isSearching = false;">
-            <label class="item item-input">
-                <button class="button button-icon ion-search searchicon" 
-                        ng-click="vm.isSearching = !vm.isSearching;">
-                </button>
-                <input type="search" placeholder="Search" ng-model="vm.searchValue">
-                <a href="#/wall/visual-search">
-                    <button class="button button-icon ion-camera searchicon" 
-                            ng-click="vm.isSearching = !vm.isSearching;">
-                    </button>
-                </a>
-            </label>
-        </section> 
+        <search-panel></search-panel>
 
         <ion-nav-view name="wallContent"></ion-nav-view>
     </ion-side-menu-content>

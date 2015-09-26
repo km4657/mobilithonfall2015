@@ -55,16 +55,17 @@
             })
             .controller('wallCtrl', wallCtrl);
 
-    wallCtrl.$inject = ['$log', '$ionicSideMenuDelegate', 'ngToast'];
+    wallCtrl.$inject = ['$log', '$ionicSideMenuDelegate', 'ngToast', 'SearchString'];
 
-    function wallCtrl($log, $ionicSideMenuDelegate, ngToast) {
+    function wallCtrl($log, $ionicSideMenuDelegate, ngToast, SearchString) {
         var vm = this;
+        vm.SearchString=SearchString;
         vm.search = function () {
-            vm.isSearching = !vm.isSearching;
+            vm.isSearching = !vm.SearchString.isSearching;
 
             ngToast.create({
                 className: 'danger',
-                content: 'Searching for: '+vm.searchValue
+                content: 'Searching for: '+vm.SearchString.searchValue
             });
         }
     }

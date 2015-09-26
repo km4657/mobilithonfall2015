@@ -500,7 +500,7 @@ crop.factory('cropArea', ['cropCanvas', function(CropCanvas) {
     this._events=events;
 
     this._aspectRatio=null;
-    this._minSize={x:0, y: 0, w:80, h:80};
+    this._minSize={x:0, y: 0, w:10, h:10};
 
     this._cropCanvas=new CropCanvas(ctx);
 

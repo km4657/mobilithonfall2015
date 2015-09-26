@@ -19,10 +19,10 @@
             })
             .controller('VisualSearchCtrl', VisualSearchCtrl);
 
-    VisualSearchCtrl.$inject = ['$log', '$stateParams', '$interval', '$document', '$scope'];
-    function VisualSearchCtrl($log, $stateParams, $interval, $document, $scope) {
+    VisualSearchCtrl.$inject = ['$log', '$stateParams', '$interval', '$document', '$scope', 'SearchString'];
+    function VisualSearchCtrl($log, $stateParams, $interval, $document, $scope, SearchString) {
         var vm = this;
-        vm.searchText = 'none';
+        vm.SearchString = SearchString;
         $scope.myImage = '';
         $scope.myCroppedImage = '';
 
@@ -38,7 +38,8 @@
         };
 
         vm.search = function () {
-            vm.searchText = OCRAD(window.temp_ctx);
+            vm.SearchString.searchValue = OCRAD(window.temp_ctx);
+            vm.SearchString.isSearching = true;
         }
         angular.element(document.querySelector('#fileInput')).on('change', handleFileSelect);
         
