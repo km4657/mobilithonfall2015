@@ -51,13 +51,12 @@
              id="fileInput" 
              name="cameraInput">
     </label>
-    
+      <button ng-click="vm.search()">Search from image.</button>
+      <h1>{{vm.searchText}}</h1>
   <div class="cropArea">
-    <img-crop image="myImage" area-type="square" result-image="myCroppedImage"></img-crop>
-  </div>
-  <div>Cropped Image:</div>
-  
-  <div><img ng-src="{{myCroppedImage}}" /></div>
-      
+    <img-crop image="myImage" area-type="rectangle" area-min-size="40" result-image="myCroppedImage"></img-crop>
+  </div>                                 
+  <div>Cropped Image:</div> 
+  <div><canvas id="cropped"> </canvas></div>    
   </ion-content>
 </ion-view>

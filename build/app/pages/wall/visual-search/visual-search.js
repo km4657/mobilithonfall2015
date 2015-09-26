@@ -22,22 +22,27 @@
     VisualSearchCtrl.$inject = ['$log', '$stateParams', '$interval', '$document', '$scope'];
     function VisualSearchCtrl($log, $stateParams, $interval, $document, $scope) {
         var vm = this;
-     
-        $scope.myImage='';
-        $scope.myCroppedImage='';
+        vm.searchText = 'none';
+        $scope.myImage = '';
+        $scope.myCroppedImage = '';
 
-        var handleFileSelect=function(evt) {
-          var file=evt.currentTarget.files[0];
-          var reader = new FileReader();
-          reader.onload = function (evt) {
-            $scope.$apply(function($scope){
-              $scope.myImage=evt.target.result;
-            });
-          };
-          reader.readAsDataURL(file);
+        var handleFileSelect = function (evt) {
+            var file = evt.currentTarget.files[0];
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                $scope.$apply(function ($scope) {
+                    $scope.myImage = evt.target.result;
+                });
+            };
+            reader.readAsDataURL(file);
         };
-        angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
-      
+
+        vm.search = function () {
+            vm.searchText = OCRAD(window.temp_ctx);
+        }
+        angular.element(document.querySelector('#fileInput')).on('change', handleFileSelect);
+        
+
     }
 
 
