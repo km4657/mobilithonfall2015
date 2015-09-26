@@ -9,4 +9,3 @@ build/
 dist/
 nbproject/private/
 bower_components/
-!/build/
