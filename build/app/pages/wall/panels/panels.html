@@ -16,8 +16,7 @@
         margin: 0;
         padding: 0;
         height: 81px;
-      }id: undefined
-render: undefined
+      }
       .panel-small {
         background-color: black;
         color: white;
@@ -25,11 +24,11 @@ render: undefined
         border: none;
       }
   </style>
-  <ion-slide-box id="slide-box" on-slide-changed="vm.slideHasChanged($index)" show-pager="false">
-    <ion-slide ng-repeat="panelID in vm.panelList track by $index">
-      <panel panelid="panelID" render="vm.currentPanel"></panel>
-    </ion-slide>
-  </ion-slide-box>
+  <ul id="slide-box" on-slide-changed="vm.slideHasChanged($index)" show-pager="false">
+    <li ng-repeat="panelID in vm.panelList track by $index">
+      <panel panelid="panelID" render=""></panel>
+    </li>
+  </ul>
   <section id="panel-list-container">
     
     <div class="list panel-small">
