@@ -33,14 +33,31 @@
     .fade.ng-leave.ng-leave-active {
       opacity: 0;
     }
+    
+    .cropArea {
+      background: #E4E4E4;
+      overflow: hidden;
+      width:500px;
+      height:350px;
+    }
+    
   </style>
   <ion-content>
     <label class="item item-input">
       <i class="icon camera-search placeholder-icon"></i>
-      <input type="file" capture="camera" accept="image/*" id="cameraInput" name="cameraInput">
+      <input type="file" 
+             capture="camera" 
+             accept="image/*" 
+             id="fileInput" 
+             name="cameraInput">
     </label>
-    <h2 id="recommendation">Search by: <span>{{vm.item.name}}</span></h2>
-  </ion-content>
-  <div id="keyboard">
+    
+  <div class="cropArea">
+    <img-crop image="myImage" area-type="square" result-image="myCroppedImage"></img-crop>
   </div>
+  <div>Cropped Image:</div>
+  
+  <div><img ng-src="{{myCroppedImage}}" /></div>
+      
+  </ion-content>
 </ion-view>

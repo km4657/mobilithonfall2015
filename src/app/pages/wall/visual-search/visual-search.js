@@ -3,43 +3,41 @@
     'use strict';
 
     angular.module('pages.visual-search', [
+        'ngImgCrop'
     ])
-        .config(function ($stateProvider) {
-            $stateProvider
-                .state('wall.visual-search', {
-                    url: '/visual-search',
-                    views: {
-                        'wallContent': {
-                            templateUrl: 'app/pages/wall/visual-search/visual-search.html',
-                            controller: 'VisualSearchCtrl as vm'
-                        }
-                    }
-                });
-        })
-        .controller('VisualSearchCtrl', VisualSearchCtrl);
-    
-    VisualSearchCtrl.$inject=['$log', '$stateParams', '$interval'];
-    function VisualSearchCtrl($log, $stateParams, $interval) {
-        var vm = this;        
-        var count = 0;
-        
-        var items = [
-            { name: "First Name" },
-            { name: "Last Name" },
-            { name: "State" },
-            { name: "City" },
-            { name: "County" },
-            { name: "School" }
-        ];
+            .config(function ($stateProvider) {
+                $stateProvider
+                        .state('wall.visual-search', {
+                            url: '/visual-search',
+                            views: {
+                                'wallContent': {
+                                    templateUrl: 'app/pages/wall/visual-search/visual-search.html',
+                                    controller: 'VisualSearchCtrl as vm'
+                                }
+                            }
+                        });
+            })
+            .controller('VisualSearchCtrl', VisualSearchCtrl);
 
-        vm.item = items[0];
-        $interval(setNextItem, 2000)
+    VisualSearchCtrl.$inject = ['$log', '$stateParams', '$interval', '$document', '$scope'];
+    function VisualSearchCtrl($log, $stateParams, $interval, $document, $scope) {
+        var vm = this;
+     
+        $scope.myImage='';
+        $scope.myCroppedImage='';
 
-        function setNextItem() {
-            if (count === items.length) count = 0;
-            vm.item = items[count];
-            count = count + 1;
-        }
+        var handleFileSelect=function(evt) {
+          var file=evt.currentTarget.files[0];
+          var reader = new FileReader();
+          reader.onload = function (evt) {
+            $scope.$apply(function($scope){
+              $scope.myImage=evt.target.result;
+            });
+          };
+          reader.readAsDataURL(file);
+        };
+        angular.element(document.querySelector('#fileInput')).on('change',handleFileSelect);
+      
     }
 
 
