@@ -48,7 +48,9 @@
                             vm.rows[value.rowNumber].push(value);
                         });
                         vm.isShowing=true;
-                        $ionicScrollDelegate.resize();
+                        $timeout(function() {
+                            $ionicScrollDelegate.$getByHandle(vm.panelid).resize();
+                        },1000);
                     });
                 }
                 return true;

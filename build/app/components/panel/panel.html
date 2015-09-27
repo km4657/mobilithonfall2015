@@ -1,4 +1,11 @@
-<ion-scroll zooming="true" direction="xy" minZoom=".01" paging="false" locking="false" id="panel-background">
+<ion-scroll zooming="true" 
+            direction="xy" 
+            minZoom=".01" 
+            paging="false" 
+            locking="false" 
+            id="panel-background"
+            delegate-handle="{{panelid}}"
+            >
     <style>
         #panel-background {
             background-color: white;
@@ -33,7 +40,6 @@
         }
     </style>
 
-        #{{isShowing}}#
     <div id="panel" ng-if="isShowing" >
         <!--ddiv class="panel-row" 
             <iv class="panel-column" ng-repeat="vet in r track by $index" >
