@@ -9,6 +9,7 @@
     function WallService($log, $http, RestConstants, $timeout) {
         var vm = this;
         vm.list = [];
+        vm.rows = [];
         vm.currentVets=[];
         
         function init() {
@@ -20,6 +21,11 @@
         vm.getList = function () {
             $http.get(RestConstants.vvmw_50w).then(function (result) {
                 vm.list = result.data;
+                angular.forEach(vm.list, function (value, key) {
+                    if (vm.rows[value.rowNumber] === undefined)
+                        vm.rows[value.rowNumber] = [];
+                    vm.rows[value.rowNumber].push(value);
+                });
             });
         }
         init();

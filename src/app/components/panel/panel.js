@@ -3,26 +3,33 @@
 
     angular.module('components.panel', [])
             .directive('panel', panel);
-    panel.$inject = ['$log', 'WallService'];
-    function panel($log, WallService) {
+    panel.$inject = ['$log', 'WallService', '$ionicGesture'];
+    function panel($log, WallService, $ionicGesture) {
         return {
             restrict: 'E',
-            scope: {
+            scope: true,
+            bindToController: {
                 panelid: '=',
                 render: '='
             },
             controller: PanelCtrl,
-            templateUrl: 'app/components/panel/panel.html'
+            controllerAs: 'vm',
+            templateUrl: 'app/components/panel/panel.html',
+            link: function (scope, element, attrs) {
+                $ionicGesture.on('pinch', function (e)
+                {
+                    element.find('#panel').css('zoom', e.gesture.scale);
+                    console.log(e.gesture.scale)
+                }, element);
+            }
         }
     }
 
-    PanelCtrl.$inject = ['WallService', '$scope'];
-    function PanelCtrl(WallService, $scope) {
-        var vm = $scope;
-        vm.rows = [];
+    PanelCtrl.$inject = ['WallService'];
+    function PanelCtrl(WallService) {
+        var vm = this;
         vm.WallService = WallService;
 
-        vm.currentVets = [];
         vm.show = function () {
             if (vm.panelid === vm.render)
                 return true;
@@ -32,25 +39,7 @@
                 return true;
             return false;
         }
-        vm.getNames = function () {
-
-            $scope.$watch(function () {
-                if (1 < vm.WallService.list.length)
-                    return vm.WallService.list;
-                return null;
-            }, function (newList) {
-                if (null === newList)
-                    return;
-                angular.forEach(vm.WallService.list, function (value, key) {
-                    if (vm.rows[value.rowNumber] === undefined)
-                        vm.rows[value.rowNumber] = [];
-                    vm.rows[value.rowNumber].push(value);
-                });
-                console.dir(vm.rows);
-            });
-        }
     }
-
 })();
 
 
