@@ -33,12 +33,14 @@
         }
     </style>
 
-    <div id="panel" ng-if="vm.show()" >
-        <div class="panel-row" ng-repeat="r in vm.WallService.rows track by $index">
-            <div class="panel-column" ng-repeat="vet in r track by $index" >
+        #{{isShowing}}#
+    <div id="panel" ng-if="isShowing" >
+        <!--ddiv class="panel-row" 
+            <iv class="panel-column" ng-repeat="vet in r track by $index" >
                 <p class="panel-name"> * {{vet.wallName}} {{$parent.$index}},{{$index}} * </p>	
-            </div>
-
-        </div>	
+            </div> </div-->	
+            <p ng-repeat="row in rows track by $index"
+                style="text-align: {{justification}};">{{getRow(row)}}</p>
+       
     </div>	
 </ion-scroll>
