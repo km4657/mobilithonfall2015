@@ -37,9 +37,10 @@
             vm.currentPanel = vm.panelList[index];
             vm.currentPanelScroll = index;
         };
+        
         vm.changePage = function () {
-            $log.debug('trying to changed to: 121');
-            vm.slideDelegate.slide(121);
+            $log.debug('trying to changed to: '+vm.currentPanelScroll);
+            vm.slideDelegate.slide(vm.currentPanelScroll);
         };
         init();
         

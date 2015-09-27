@@ -8,7 +8,7 @@
                         'playlist': '/rest/playlist',
                         'orderlist': '/rest/orderlist',
                         'playlists': '/rest/playlist&name={listname}',                        
-                        'vvmw': '/rest/vvmw&panel={panel}',
+                        'vvmw': 'test/mocks/vvmw_{panel}.json',
                         /**
                          * Mocked out URLs 
                          */
