@@ -6,7 +6,7 @@
             background: -o-linear-gradient(top, #e8e8e8 0%, #7f7f7f 1%, #000000 53%, #000000 100%);
             background: -ms-linear-gradient(top, #e8e8e8 0%, #7f7f7f 1%, #000000 53%, #000000 100%);
             background: linear-gradient(to bottom, #e8e8e8 0%, #7f7f7f 1%, #000000 53%, #000000 100%);
-            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', endColorstr='#000000', GradientType=0);
+            filter: DXImageTransform.Microsoft.gradient( startColorstr='#e8e8e8', endColorstr='#000000', GradientType=0);
         }
         
         .tab-item {
