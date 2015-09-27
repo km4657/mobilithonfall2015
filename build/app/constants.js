@@ -7,11 +7,16 @@
                     {
                         'playlist': '/rest/playlist',
                         'orderlist': '/rest/orderlist',
-                        'playlists': '/rest/playlist&name={listname}',
+                        'playlists': '/rest/playlist&name={listname}',                        
+                        'vvmw': 'test/mocks/vvmw_{panel}.json',
                         /**
                          * Mocked out URLs 
                          */
                         'reggae': '/rest/playlist&name=reggae',
-                        'vvmw_50w': '/rest/vvmw'
+                        'vvmw_50W': '/rest/vvmw&panel=50W',
+                        'vvmw_51W': '/rest/vvmw&panel=51W',
+                        'vvmw_52W': '/rest/vvmw&panel=52W',
+                        'vvmw_53W': '/rest/vvmw&panel=53W',
+                        'vvmw_54W': '/rest/vvmw&panel=54W'
                     });
 })();

@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('test', [
+    .module('testold', [
       'ngMockE2E',
       'test.load-backend-mock'
     ])

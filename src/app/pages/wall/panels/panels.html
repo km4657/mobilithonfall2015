@@ -24,16 +24,17 @@
         border: none;
       }
   </style>
-  <ul id="slide-box" on-slide-changed="vm.slideHasChanged($index)" show-pager="false">
-    <li ng-repeat="panelID in vm.panelList track by $index">
-      <panel panelid="panelID" render=""></panel>
-    </li>
-  </ul>
+  <ion-slide-box id="slide-box" delegate-handle="panelbox" on-slide-changed="vm.slideHasChanged(index)" show-pager="false">
+    <ion-slide ng-repeat="panelID in vm.panelList track by $index">
+       #{{$index}}#
+      <panel panelid="panelID" renderid="vm.currentPanel"></panel>
+    </ion-slide>
+  </ion-slide-box>
   <section id="panel-list-container">
     
     <div class="list panel-small">
       <div class="item range range-positive panel-small">
-        <input type="range" name="volume" min="1" max="140" ng-model="vm.currentPanel" ng-change="vm.changePage()">
+        <input type="range" name="panelScroll" min="1" max="140" ng-model="vm.currentPanelScroll" ng-change="vm.changePage()">
       </div>
     </div>
   </section>
