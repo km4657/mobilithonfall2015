@@ -1,40 +1,44 @@
-<section id="panel-background">
-	<style>
-		#panel-background {
-			width: 100%;
-			height: 100%; 
-			background-color: white;
-		}
-		#panel{
-			color: white;
-			background-color: black;
-			width: 100%;
-			height: 100%;
-                        width: 2000px;
-		}
-		.panel-row {
-			position: relative;
-                        display: inline-block;
-			margin: 10px;
-			padding: 10px;
-		}
-		.panel-column {
-			position: relative;
-                        display: inline-block;
-			margin: 10px;
-			padding: 10px;
-		}
-		.panel-name {
-			color: white;
-		}
-	</style>
-<h1 class="panel-name">PANEL #{{vm.panelid}}</h1>
-	<div id="panel" ng-if="vm.show()" >
-		<div class="panel-row" ng-repeat="r in vm.WallService.rows track by $index">
-			<div class="panel-column" ng-repeat="vet in r track by $index" >
-				<h3 class="panel-name"> * {{vet.wallName}} {{$parent.$index}},{{$index}} * </h3>	
-			</div>
-                    
-		</div>	
-	</div>	
-</section>
+<ion-scroll zooming="true" direction="xy" minZoom=".01" paging="false" locking="false" id="panel-background">
+    <style>
+        #panel-background {
+            background-color: white;
+        }
+        #panel{
+            color: white;
+            background-color: black;
+            width: 100%;
+            height: 5000px;
+            width: 2500px;
+            zoom: .4;
+            -webkit-text-size-adjust: none;
+            text-size-adjust: none;
+        }
+        .panel-row {
+            position: relative;
+            display: inline-block;
+            margin-left: 10px;
+            padding-right: 10px;
+            line-height: 70%;
+        }
+        .panel-column {
+            position: relative;
+            display: inline-block;
+            margin-left: 10px;
+            padding-right: 10px;
+        }
+        .panel-name {
+            -webkit-text-size-adjust: none;
+            font-size: 50%;
+            color: white;
+        }
+    </style>
+
+    <div id="panel" ng-if="vm.show()" >
+        <div class="panel-row" ng-repeat="r in vm.WallService.rows track by $index">
+            <div class="panel-column" ng-repeat="vet in r track by $index" >
+                <p class="panel-name"> * {{vet.wallName}} {{$parent.$index}},{{$index}} * </p>	
+            </div>
+
+        </div>	
+    </div>	
+</ion-scroll>

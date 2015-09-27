@@ -3,8 +3,8 @@
 
     angular.module('components.panel', [])
             .directive('panel', panel);
-    panel.$inject = ['$log', 'WallService', '$ionicGesture'];
-    function panel($log, WallService, $ionicGesture) {
+    panel.$inject = ['$log', 'WallService', '$ionicGesture', '$ionicScrollDelegate', '$timeout'];
+    function panel($log, WallService, $ionicGesture, $ionicScrollDelegate, $timeout) {
         return {
             restrict: 'E',
             scope: true,
@@ -16,17 +16,13 @@
             controllerAs: 'vm',
             templateUrl: 'app/components/panel/panel.html',
             link: function (scope, element, attrs) {
-                $ionicGesture.on('pinch', function (e)
-                {
-                    element.find('#panel').css('zoom', e.gesture.scale);
-                    console.log(e.gesture.scale)
-                }, element);
+                //$ionicScrollDelegate.zoomBy(.3);
             }
         }
     }
 
-    PanelCtrl.$inject = ['WallService'];
-    function PanelCtrl(WallService) {
+    PanelCtrl.$inject = ['WallService', '$timeout', '$ionicScrollDelegate'];
+    function PanelCtrl(WallService, $timeout, $ionicScrollDelegate) {
         var vm = this;
         vm.WallService = WallService;
 
@@ -39,6 +35,10 @@
                 return true;
             return false;
         }
+        
+        $timeout(function(){
+            $ionicScrollDelegate.resize();
+        }, 5000);
     }
 })();
 

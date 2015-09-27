@@ -19,9 +19,10 @@
         })
         .controller('panelsCtrl', panelsCtrl);
 
-    panelsCtrl.$inject = ['$log', '$scope', '$ionicSlideBoxDelegate', '$timeout'];
-    function panelsCtrl($log, $scope, $ionicSlideBoxDelegate, $timeout) {
+    panelsCtrl.$inject = ['$log', '$scope', '$ionicSlideBoxDelegate', '$timeout', 'SearchString'];
+    function panelsCtrl($log, $scope, $ionicSlideBoxDelegate, $timeout, SearchString) {
         var vm = this;
+        vm.SearchString=SearchString;
         vm.panelList = [];
         for (var i = 1; i < 141; i++) {
             vm.panelList[i] = i;
@@ -36,7 +37,8 @@
             vm.currentPanel=$index;   
         }
         vm.changePage=function() {
-            $ionicSlideBoxDelegate.slide(vm.currentPanel);
+           // $ionicSlideBoxDelegate.slide(vm.currentPanel);
+           SearchString.zoom = vm.currentPanel/10;
         }
     }
 
